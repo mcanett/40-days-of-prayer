@@ -2,7 +2,6 @@
 
 exports[`should render ExpenseList with expense 1`] = `
 <div>
-  <Connect(ExpenseListFilters) />
   <ExpenseListItem
     amount={195}
     count={1}
@@ -35,7 +34,6 @@ exports[`should render ExpenseList with expense 1`] = `
 
 exports[`should render expense list with empty message 1`] = `
 <div>
-  <Connect(ExpenseListFilters) />
   <p>
     No expenses
   </p>
