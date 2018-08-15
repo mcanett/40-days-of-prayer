@@ -3,8 +3,9 @@ import moment from 'moment';
 const filtersReducerDefaultState = {
   text: '',
   sortBy: 'date',
-  startDate: moment().startOf('month'),
-  endDate: moment().endOf('month')
+  startDate: moment().startOf('day'),
+  endDate: moment().endOf('day'),
+  prefix: ''
 };
 export default (state = filtersReducerDefaultState, action) => {
   switch(action.type) {
@@ -32,6 +33,11 @@ export default (state = filtersReducerDefaultState, action) => {
       return {
         ...state,
         endDate: action.endDate
+      };
+    case 'SET_PREFIX':
+      return {
+        ...state,
+        prefix: action.prefix
       };
     default:
       return state;

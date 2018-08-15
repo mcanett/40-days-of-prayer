@@ -21,3 +21,8 @@ export const setEndDate = (endDate) => ({
   type: 'SET_END_DATE',
   endDate
 });
+// SET_END_DATE
+export const setPrefix = (prefix) => ({
+  type: 'SET_PREFIX',
+  prefix
+});

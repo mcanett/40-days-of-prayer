@@ -16,6 +16,59 @@ const database = firebase.database();
 
 export { firebase, database as default };
 
+// const folio = 'P-62519';
+// const secondFolio = 'P-62518';
+// const partaker = {
+//   name: {
+//     lastName: 'Pérez',
+//     mothersSurname: 'Pérez',
+//     firstName: 'Fulanito'
+//   }
+// }
+
+// const createFolio = (folio) => {
+
+//   // Looking if the folio is repeated
+//   database.ref('folios')
+//   .orderByValue()
+//   .equalTo(folio)
+//   .once('value')
+//   .then((snapshot) => {
+//     return snapshot.val();
+//   }).then((storedFolio) => {
+//     // If folio is repeated the process run again
+//     if (storedFolio !== null) {
+//       createFolio(secondFolio)
+//     } else {
+//       // If folio doesn't exist, it's created
+//       console.log('new folio created');
+//       return database.ref('folios').push(folio);
+//     }
+//   }).then((createdFolio) => {
+//     // If folio was created, partaker is saved
+//     if (createdFolio) {
+//       console.log('creating partaker');
+//       Object.assign(partaker, { folio });
+
+//       // Creating partaker
+//       return database.ref('partakers').push(partaker).then((ref) => {
+//         console.log('is entering here');
+//         dispatch(addFolio({
+//           id: ref.key,
+//           ...partaker
+//         }));
+//       });
+//     }
+//   });
+// }
+
+// createFolio(folio);
+
+// database.ref('expenses')
+// .orderByChild('description').equalTo('new test expense').once('value').then((snapshot) => {
+//   console.log(snapshot.val());
+// });
+
 // // child_removed
 // database.ref('expenses').on('child_removed', (snapshot) => {
 //   console.log(snapshot.key, snapshot.val());

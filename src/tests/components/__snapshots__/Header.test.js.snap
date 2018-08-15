@@ -3,7 +3,7 @@
 exports[`should render header correctly 1`] = `
 <header>
   <h1>
-    Expensify
+    40 días de oración
   </h1>
   <NavLink
     activeClassName="is-active"
@@ -16,9 +16,17 @@ exports[`should render header correctly 1`] = `
   <NavLink
     activeClassName="is-active"
     ariaCurrent="true"
+    to="/create/folio"
+  >
+    Crear Folio
+  </NavLink>
+  <NavLink
+    activeClassName="is-active"
+    ariaCurrent="true"
+    exact={true}
     to="/create"
   >
-    Create Expense
+    Registro Participante
   </NavLink>
 </header>
 `;

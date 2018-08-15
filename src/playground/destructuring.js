@@ -9,7 +9,6 @@
 //   }
 // };
 
-
 // const { name: firstName = 'Anonymous', age } = person;
 // console.log(`${firstName} is ${age}.`);
 
@@ -39,5 +38,5 @@
 // console.log(`You are in ${city} ${state}`);
 
 const item = ['Coffe (hot)', '$2.00', '$2.50', '$2.75'];
-const [ itemName = 'Coffe (iced)', , mediumPrice] = item;
+const [ itemName = 'Coffe (iced)', , mediumPrice ] = item;
 console.log(`A medium ${itemName} costs ${mediumPrice}`);
