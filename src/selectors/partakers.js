@@ -11,7 +11,9 @@ export default (partakers, { text, sortBy, startDate, endDate, prefix }) => {
     const createdAtMoment = moment(partaker.createdAt);
     const startDateMatch = startDate ? startDate.isSameOrBefore(createdAtMoment, 'day') : true ;
     const endDateMatch = endDate ? endDate.isSameOrAfter(createdAtMoment, 'day') : true;
-    const textMatch = typeof text !== 'string' || fullName.toLowerCase().includes(text.toLowerCase());
+    const textMatch = typeof text !== 'string' 
+      || fullName.toLowerCase().includes(text.toLowerCase()) 
+      || partaker.folio.toLowerCase().includes(text.toLowerCase());
     const prefixMatch = partaker.folio.includes(prefix);
 
     return startDateMatch && endDateMatch && textMatch && prefixMatch;

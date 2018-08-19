@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const WelcomePage = () => {
   return (
@@ -10,3 +11,5 @@ const WelcomePage = () => {
     </div>
   );
 };
+
+export default WelcomePage;

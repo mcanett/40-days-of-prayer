@@ -1,14 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import numeral from 'numeral';
 
-const PartakerListItem = ({ count, id, folio, name}) => (
+const PartakerListItem = ({ count, id, folio, name, createdAt}) => {
+const fullName = `${name.lastName} ${name.mothersSurname} ${name.firstName}`;
+const formattedDate = moment(createdAt).format('DD/MM/YY');
+
+return (
   <div>
-    <Link to={`edit/${id}`}>
-      <h3>{count}. {folio} - {name.lastName}</h3>
-    </Link>
+    <h3>
+    {count}. {folio} - {fullName} - {formattedDate} - <Link to={`edit/${id}`}>Edit</Link>
+    </h3>
   </div>
-);
+)};
 
 export default PartakerListItem;

@@ -2,7 +2,9 @@
 // partaker = participante
 // host = anfitrion
 // facilitator = facilitador
+
 // finances = finanzas
+// registry = registro
 
 const dataExample = 
 {
@@ -18,7 +20,7 @@ const dataExample =
   isChristian, // ¿es cristiano?
   congregateTime, // tiempo de congregarse
   congregartionName, // nombre de la congregacion
-  // house_id:, // en caso de ser participante se ligara con el id de otro participante/casa
+  // houseId:, // en caso de ser participante se ligara con el id de otro participante/casa
   hostInfo: {
     address: {
       streetName, // calle
@@ -33,7 +35,7 @@ const dataExample =
     houseCapacity, // cap. de la casa
     layaways, // num. de apartados
   },
-  facilitator_info: {
+  facilitatorInfo: {
       timeInFaith, // Tiempo en la fe/de conocer a Dios
       cedesCongregationTime, // Tiempo de congregarse en Cedes
   },

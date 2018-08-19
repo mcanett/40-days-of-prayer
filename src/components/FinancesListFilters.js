@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { SingleDatePicker } from 'react-dates';
+import { DateRangePicker } from 'react-dates';
 import { setTextFilter, setStartDate, setEndDate, setPrefix } from '../actions/filters';
 
 export class FinancesListFilters extends React.Component {
   state = {
-    calendarFocused: false
+    calendarFocused: null
   };
 
   
-  onDateChange = (startDate) => {
+  onDatesChange = ({ startDate, endDate }) => {
     this.props.setStartDate(startDate);
-    this.props.setEndDate(startDate);
+    this.props.setEndDate(endDate);
   };
   
   onTextChange = (e) => {
@@ -22,15 +22,15 @@ export class FinancesListFilters extends React.Component {
     this.props.setPrefix(e.target.value);
   };
   
-  onFocusChange = ({ focused }) => {
-    this.setState(() => ({ calendarFocused: focused }));
+  onFocusChange = (calendarFocused) => {
+    this.setState(() => ({ calendarFocused }));
   };
 
   render() {
     return (
       <div>
         <select
-          value={this.state.prefix}
+          value={this.props.filters.prefix}
           onChange={this.onPrefixChange}
         >
           <option value="" >Todos</option>
@@ -40,16 +40,22 @@ export class FinancesListFilters extends React.Component {
         </select>
         <input
           type="text"
+          placeholder="Nombre"
           value={this.props.filters.text}
           onChange={this.onTextChange}
         />
-        <SingleDatePicker
-          date={this.props.filters.startDate}
-          onDateChange={this.onDateChange}
-          focused={this.state.calendarFocused}
+        <DateRangePicker
+          startDate={this.props.filters.startDate}
+          endDate={this.props.filters.endDate}
+          onDatesChange={this.onDatesChange}
+          focusedInput={this.state.calendarFocused}
           onFocusChange={this.onFocusChange}
+          showClearDates={true}
           numberOfMonths={1}
           isOutsideRange={() => false}
+          startDatePlaceholderText={'Fecha Inicio'}
+          endDatePlaceholderText={'Fecha Fin'}
+          displayFormat={'DD/MM/YYYY'}
         />
       </div>
     );

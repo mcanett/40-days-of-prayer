@@ -143,7 +143,7 @@ export const editPartaker = (id, updates) => ({
 
 export const startEditPartaker = (id, updates) => {
   return (dispatch) => {
-    return database.ref(`partakers/${id}`).update(updates).then(() => {
+    return database.ref(`partakers/${id}`).set(updates).then(() => {
       dispatch(editPartaker(id, updates));
     });
   };

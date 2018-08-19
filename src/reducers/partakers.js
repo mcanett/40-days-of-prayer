@@ -12,7 +12,7 @@ export default (state = partakersReducerDefaultState, action) => {
       return state.map((partaker) => {
         if (partaker.id === action.id){
             return {
-              ...partaker,
+              id: partaker.id,
               ...action.updates
             };
         } else {

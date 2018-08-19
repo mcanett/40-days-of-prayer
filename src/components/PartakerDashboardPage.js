@@ -6,9 +6,8 @@ import PartakersSummary from './PartakersSummary';
 const PartakerDashboardPage = () => (
   <div>
     {/*<PartakersSummary />*/}
-    {/*<PartakerListFilters />*/}
-    {/*<PartakerList />*/}
-    This is my dashboard page
+    <PartakerListFilters />
+    <PartakerList />
   </div>
 );
 
