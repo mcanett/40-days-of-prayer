@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 const PartakerListItem = ({ count, id, folio, name, createdAt}) => {
-const fullName = `${name.lastName} ${name.mothersSurname} ${name.firstName}`;
+const fullName = `${name.firstName} ${name.lastName} ${name.mothersSurname}`;
 const formattedDate = moment(createdAt).format('DD/MM/YY');
 
 return (

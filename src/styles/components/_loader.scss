@@ -1,9 +1,20 @@
 
-.loader {
-  padding: 0;
-  margin-top: 20%;
-  list-style: none;
-  display: flex;
-  align-items: center;
+.parent-loader {
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  
   justify-content: center;
+  align-items: center;
+  
+  width: 100vw;
+  height: 100vh;
+  /*background-color: #3498db;*/
+}
+
+.loader {
+  width: 500px;
+  height: 10px;
+  /*background-color: #f10f0f;*/
 }

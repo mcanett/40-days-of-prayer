@@ -4,14 +4,14 @@ import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { startSetPartakers } from './actions/partakers';
-import { SyncLoader } from 'react-spinners';
+import { BarLoader } from 'react-spinners';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import './firebase/firebase';
 
 const store = configureStore();
-const loaderColor = '#ffd39b';
+const loaderColor = '#f1c40f';
 
 const jsx = (
   <Provider store={store}>
@@ -20,7 +20,11 @@ const jsx = (
 );
 
 ReactDOM.render(
-  <SyncLoader className="loader" color={loaderColor}/>,
+  <div className="parent-loader">
+    <div className="loader">
+      <BarLoader color={loaderColor} width={500} height={10} />
+    </div>
+  </div>,
   document.getElementById('app')
 );
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PartakerForm from './PartakerForm';
+import HostFacilitatorForm from './HostFacilitatorForm';
 import { startEditPartaker, startRemovePartaker } from '../actions/partakers';
+import selectHosts from '../selectors/hosts';
 
 export class EditPartakerPage extends React.Component {
   onSubmit = (partaker) => {
-    console.log(partaker);
     this.props.startEditPartaker(this.props.partaker.id, partaker);
     this.props.history.push('/registry');
   };
@@ -18,7 +18,8 @@ export class EditPartakerPage extends React.Component {
     return (
       <div>
         <h1>Ingresa los datos de participante</h1>
-        <PartakerForm
+        <HostFacilitatorForm
+          hosts={this.props.hosts}
           partaker={this.props.partaker}
           onSubmit={this.onSubmit}
         />
@@ -31,7 +32,8 @@ export class EditPartakerPage extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  partaker: state.partakers.find((partaker) => partaker.id === props.match.params.id)
+  partaker: state.partakers.find((partaker) => partaker.id === props.match.params.id),
+  hosts: selectHosts(state.partakers)
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -57,7 +57,7 @@ export default class PartakerNameForm extends React.Component {
   render () {
     return (
       <div>
-        {this.state.error && <p>{this.state.error}</p>}
+        {this.state.error && <p style={{color: 'red'}}>{this.state.error}</p>}
         <form onSubmit={this.onSubmit}>
           <select
             value={this.state.prefix}
@@ -67,6 +67,12 @@ export default class PartakerNameForm extends React.Component {
             <option value="D">Donado</option>
             <option value="A">Autorizado</option>
           </select>
+          <input 
+            type="text"
+            placeholder="Nombre(s)"
+            value={this.state.firstName}
+            onChange={this.onFirstNameChange}
+          />
           <input 
             type="text"
             placeholder="Apellido Paterno"
@@ -79,12 +85,6 @@ export default class PartakerNameForm extends React.Component {
             placeholder="Apellido Materno"
             value={this.state.mothersSurname}
             onChange={this.onMothersSurnameChange}
-          />
-          <input 
-            type="text"
-            placeholder="Nombre(s)"
-            value={this.state.firstName}
-            onChange={this.onFirstNameChange}
           />
           <button>Crear folio</button>
         </form> 

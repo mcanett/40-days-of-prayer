@@ -2,7 +2,7 @@ import React from 'react';
 import LocateHouseMap from './LocateHouseMap';
 import MapWithHouses from './MapWithHouses';
 
-export default class PartakerForm extends React.Component {
+export default class HostFacilitatorForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -30,9 +30,10 @@ export default class PartakerForm extends React.Component {
       timeInFaith: props.partaker ? props.partaker.facilitatorInfo ? props.partaker.facilitatorInfo.timeInFaith : '' : '', 
       cedesCongregateTime: props.partaker ? props.partaker.facilitatorInfo ? props.partaker.facilitatorInfo.cedesCongregateTime : '' : '', 
       
-      partakerType: props.partaker ? props.partaker.hostInfo ? 'host' : props.partaker.facilitatorInfo ? 'facilitator' : 'partaker' : 'partaker',
+      isHost: props.partaker ? props.partaker.hostInfo ? true : false : false,
+      isFacilitator: props.partaker ? props.partaker.facilitatorInfo ? true : false : false,
       basicError: '',
-      partakerError: '',
+      hostFacilitatorError: '',
       hostError: '',
       facilitatorError: '',
       isMarkerShown: false,
@@ -63,7 +64,9 @@ export default class PartakerForm extends React.Component {
 
   onPhoneChange = (e) => {
     const phone = e.target.value;
-    this.setState(() => ({ phone }));
+    if (!phone || phone.match(/^\d{1,10}$/)) {
+      this.setState(() => ({ phone } ));
+    }
   };
   
   onAgeChange = (e) => {
@@ -136,9 +139,12 @@ export default class PartakerForm extends React.Component {
     this.setState(() => ({ cedesCongregateTime }));
   };
 
-  onPartakerTypeChange = (e) => {
-    const partakerType = e.target.value;
-    this.setState(() => ({ partakerType }));
+  onIsHostChange = () => {
+    this.setState(() => ({ isHost: !this.state.isHost }));
+  };
+
+  onIsFacilitatorChange = () => {
+    this.setState(() => ({ isFacilitator: !this.state.isFacilitator }));
   };
 
   onMapClick = (e) => {
@@ -164,14 +170,13 @@ export default class PartakerForm extends React.Component {
         this.setState(() => ({ basicError: 'Por favor, llene todos los datos básicos' }));
         error = true;
     } else { this.setState(() => ({ basicError: '' })); }
-    if (this.state.partakerType === 'partaker') {
-      if(!this.state.houseId) {
-        this.setState(() => ({ partakerError: 'Por favor, eliga una casa' }));
-        error = true;
-      }
-    } else { this.setState(() => ({ partakerError: '' })); }
+    // Checking for host/facilitator missed error
+    if (!this.state.isHost && !this.state.isFacilitator) {
+      this.setState(() => ({ hostFacilitatorError: 'Por favor, selecciona alguna opción anfitrión/facilitador' }) );
+      error = true;
+    } else { this.setState(() => ({ hostFacilitatorError: '' })); }
     // Checking for host errors
-    if (this.state.partakerType === 'host') {
+    if (this.state.isHost) {
       if (!this.state.streetName || !this.state.houseNumber || !this.state.neighborhood || !this.state.zipCode
         || !this.state.lat || !this.state.lng || !this.state.houseCapacity || !this.state.layaways) {
           this.setState(() => ({ hostError: 'Por favor, llene todos los datos de anfitrión' }));
@@ -179,13 +184,13 @@ export default class PartakerForm extends React.Component {
       } else { this.setState(() => ({ hostError: '' })); } 
     }
     // Checking for facilitator errors
-    if (this.state.partakerType === 'facilitator') {
+    if (this.state.isFacilitator) {
       if (!this.state.timeInFaith || !this.state.cedesCongregateTime) {
         this.setState(() => ({ facilitatorError: 'Por favor, llene todos los datos de facilitador' }));
         error = true;
       } else { this.setState(() => ({ facilitatorError: '' })); }
     }
-    // Submitting partaker
+    // Submitting host/facilitator
     if (!error) {
       const partaker = {
         folio: this.state.folio,
@@ -201,9 +206,8 @@ export default class PartakerForm extends React.Component {
         isChristian: this.state.isChristian,
         congregateTime: this.state.isChristian ? this.state.congregateTime : '',
         congregationName: this.state.isChristian ? this.state.congregationName : '',
-        houseId: this.state.houseId ? this.state.houseId : '',
       }
-      if (this.state.partakerType === 'host') {
+      if (this.state.isHost) {
         Object.assign(partaker, {
           hostInfo: {
             address: {
@@ -221,13 +225,18 @@ export default class PartakerForm extends React.Component {
           }
         });
       }
-      if (this.state.partakerType === 'facilitator') {
+      if (this.state.isFacilitator) {
         Object.assign(partaker, {
           facilitatorInfo: {
             timeInFaith: this.state.timeInFaith,
             cedesCongregateTime: this.state.cedesCongregateTime
           }
         });
+        if (this.state.houseId) {
+          Object.assign(partaker, {
+            houseId: this.state.houseId
+          });
+        }
       }
       this.props.onSubmit(partaker);
     }
@@ -238,16 +247,6 @@ export default class PartakerForm extends React.Component {
       <div>
         {this.state.basicError && <p style={{color: 'red'}}>{this.state.basicError}</p>}
         <form onSubmit={this.onSubmit}>
-          <div>
-            <select
-              value={this.state.partakerType}
-              onChange={this.onPartakerTypeChange}
-            >
-              <option value="partaker">Participante</option>
-              <option value="host">Anfitrión</option>
-              <option value="facilitator">Facilitador</option>
-            </select>
-          </div>
           <div>
             <input 
               type="text"
@@ -322,7 +321,21 @@ export default class PartakerForm extends React.Component {
             />
             }
           </div>
-          { this.state.partakerType === 'host' &&
+          {
+            this.state.hostFacilitatorError && 
+            <div>
+              <p style={{color: 'red'}}>{this.state.hostFacilitatorError}</p>
+            </div>
+          }
+          <div>
+            ¿Será anfitrión?
+            <input 
+              type="checkbox"
+              defaultValue={this.state.isHost}
+              onChange={this.onIsHostChange}
+              checked={this.state.isHost}
+            />
+          { this.state.isHost &&
             <div>
               {this.state.hostError && <p style={{color: 'red'}}>{this.state.hostError}</p>}
               <div>
@@ -364,36 +377,50 @@ export default class PartakerForm extends React.Component {
                   value={this.state.layaways}
                   onChange={this.onLayawaysChange}
                 />
-              </div>
-              <LocateHouseMap 
-                isMarkerShown={this.state.isMarkerShown}
-                markerPosition={{lat: this.state.lat, lng: this.state.lng}}
-                onMapClick={this.onMapClick}
-              />
+              </div>              
             </div>
           }
-          { this.state.partakerType === 'facilitator' &&
-            <div>
-              {this.state.facilitatorError && <p style={{color: 'red'}}>{this.state.facilitatorError}</p>}
+          </div>
+          <div>
+            ¿Será facilitador?
+            <input 
+              type="checkbox"
+              defaultValue={this.state.isFacilitator}
+              onChange={this.onIsFacilitatorChange}
+              checked={this.state.isFacilitator}
+            />
+            { this.state.isFacilitator &&
               <div>
-                <input 
-                  type="text"
-                  placeholder="Tiempo en la fe"
-                  value={this.state.timeInFaith}
-                  onChange={this.onTimeInFaithChange}
-                />
-                <input 
-                  type="text"
-                  placeholder="Tiempo en Cedes"
-                  value={this.state.cedesCongregateTime}
-                  onChange={this.onCedesCongregateTimeChange}
-                />
+                {this.state.facilitatorError && <p style={{color: 'red'}}>{this.state.facilitatorError}</p>}
+                <div>
+                  <input 
+                    type="text"
+                    placeholder="Tiempo en la fe"
+                    value={this.state.timeInFaith}
+                    onChange={this.onTimeInFaithChange}
+                  />
+                  <input 
+                    type="text"
+                    placeholder="Tiempo en Cedes"
+                    value={this.state.cedesCongregateTime}
+                    onChange={this.onCedesCongregateTimeChange}
+                  />
+                </div>
               </div>
+            }
+          </div>
+          <button>Guardar Participante</button>
+          { (this.state.isHost) &&
+            <div>
+                <LocateHouseMap 
+                  isMarkerShown={this.state.isMarkerShown}
+                  markerPosition={{lat: this.state.lat, lng: this.state.lng}}
+                  onMapClick={this.onMapClick}
+                />
             </div>
           }
-          { (this.state.partakerType === 'partaker' || this.state.partakerType === 'facilitator') &&
+          { (this.state.isFacilitator && !this.state.isHost) &&
             <div>
-              {this.state.partakerError && <p style={{color: 'red'}}>{this.state.partakerError}</p>}
               <MapWithHouses 
                 houseId={this.props.partaker.houseId ? this.props.partaker.houseId : undefined}
                 hosts={this.props.hosts}
@@ -401,7 +428,6 @@ export default class PartakerForm extends React.Component {
               />
             </div>
           }
-          <button>Guardar Participante</button>
         </form> 
       </div>
     );
