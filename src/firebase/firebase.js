@@ -13,8 +13,18 @@ const config = {
 firebase.initializeApp(config);
 
 const database = firebase.database();
+const authProvider = firebase.auth();
 
-export { firebase, database as default };
+const createUser = (email, password) => {
+  const secondaryApp = firebase.initializeApp(config, "secondary");
+  return secondaryApp.auth().createUserWithEmailAndPassword(email, password).then((user) => {
+    secondaryApp.auth().signOut();
+    secondaryApp.delete();
+    return user;
+  });
+}
+
+export { firebase, authProvider, createUser, database as default };
 
 // const folio = 'P-62519';
 // const secondFolio = 'P-62518';

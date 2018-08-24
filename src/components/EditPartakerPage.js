@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 import HostFacilitatorForm from './HostFacilitatorForm';
 import { startEditPartaker, startRemovePartaker } from '../actions/partakers';
 import selectHosts from '../selectors/hosts';
+import * as routes from '../constants/routes';
 
 export class EditPartakerPage extends React.Component {
   onSubmit = (partaker) => {
     this.props.startEditPartaker(this.props.partaker.id, partaker);
-    this.props.history.push('/registry');
+    this.props.history.push(routes.REGISTRY);
   };
   onRemove = () => {
     this.props.startRemovePartaker(this.props.partaker.id);
-    this.props.history.push('/registry');
+    this.props.history.push(routes.REGISTRY);
   };
 
   render() {

@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import AppRouter from './routers/AppRouter';
+import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
-import { startSetPartakers } from './actions/partakers';
 import { BarLoader } from 'react-spinners';
+import { firebase } from './firebase/firebase';
+
+import * as routes from './constants/routes';
+import { startSetPartakers } from './actions/partakers';
+import { logout, getUserInfo } from './actions/auth';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
-import './firebase/firebase';
+
 
 const store = configureStore();
 const loaderColor = '#f1c40f';
@@ -19,6 +23,14 @@ const jsx = (
   </Provider>
 );
 
+let hasRendered = false;
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(jsx, document.getElementById('app'));
+    hasRendered = true;
+  }
+};
+
 ReactDOM.render(
   <div className="parent-loader">
     <div className="loader">
@@ -28,6 +40,19 @@ ReactDOM.render(
   document.getElementById('app')
 );
 
-store.dispatch(startSetPartakers()).then(() => {
-  ReactDOM.render(jsx, document.getElementById('app'));
+firebase.auth().onAuthStateChanged((user) => {
+  const pathName = history.location.pathname;
+  if (user) {
+    store.dispatch(getUserInfo(user.uid));
+    store.dispatch(startSetPartakers()).then(() => {
+      renderApp();
+      if (pathName === routes.LOGIN || pathName === routes.PUBLIC_WELCOME) {
+        history.push(routes.PRIVATE_WELCOME);
+      }
+    });
+  } else {
+    store.dispatch(logout());
+    renderApp();
+    history.push(routes.PUBLIC_WELCOME);
+  }
 });

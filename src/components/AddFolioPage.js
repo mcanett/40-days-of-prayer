@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PartakerNameForm from './PartakerNameForm';
 import { startAddFolio } from '../actions/partakers';
+import * as routes from '../constants/routes';
 
 export class AddFolioPage extends React.Component {
   onSubmit = (partakerName) => {
     this.props.startAddFolio(partakerName).then(() => {
-      this.props.history.push('/finances');
+      this.props.history.push(routes.FINANCES);
     });
   };
   render() {

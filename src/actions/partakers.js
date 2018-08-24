@@ -169,3 +169,21 @@ export const startSetPartakers = () => {
     });
   };
 };
+
+// GET_PARTAKER
+/*export const addSearchedPartaker = (partaker) => ({
+  type: 'ADD_SEARCHED_PARTAKER',
+  partaker
+});
+
+export const removeSearchedPartaker = () => ({
+  type: 'REMOVE_SEARCHED_PARTAKER'
+});
+
+export const startAddSearchedPartaker = (id) => {
+  return (dispatch) => {
+    return database.ref(`partakers/${id}`).once('value').then(() => {
+      dispatch(addSearchedPartaker(id, updates));
+    });
+  };
+}*/

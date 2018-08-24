@@ -5,7 +5,8 @@ import FolioModal from './FolioModal';
 import FinancesList from './FinancesList';
 import FinancesListFilters from './FinancesListFilters';
 import FinancesSummary from './FinancesSummary';
-import { removeLastPartaker } from '../actions/partakers'; 
+import { removeLastPartaker } from '../actions/partakers';
+import * as routes from '../constants/routes';
 
 export class FinancesDashboardPage extends React.Component {
   state = {
@@ -23,7 +24,7 @@ export class FinancesDashboardPage extends React.Component {
     return (
       <div>
         <div>
-          <NavLink to="/create/folio" activeClassName="is-active">Crear Folio</NavLink>
+          <NavLink to={routes.CREATE_FOLIO} activeClassName="is-active">Crear Folio</NavLink>
         </div>
         <div>
           <FinancesSummary />

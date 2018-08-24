@@ -1,31 +1,56 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import EditPartakerPage from '../components/EditPartakerPage';
-import Header from '../components/Header';
-import HelpPage from '../components/HelpPage';
+import { Router, Route, Switch } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
+
+import * as routes from '../constants/routes';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
+import AdminRoute from './AdminRoute';
+import FinancesRoute from './FinancesRoute';
+import RegistryRoute from './RegistryRoute';
+
+import PublicWelcomePage from '../components/PublicWelcomePage';
+import LoginPage from '../components/LoginPage';
 import NotFoundPage from '../components/NotFoundPage';
 
-import WelcomePage from '../components/WelcomePage';
+import PrivateWelcomePage from '../components/PrivateWelcomePage';
+
+import UsersDashboardPage from '../components/UsersDashboardPage';
+import AddUserPage from '../components/AddUserPage';
+
 import FinancesDashboardPage from '../components/FinancesDashboardPage';
 import AddFolioPage from '../components/AddFolioPage';
+
 import PartakerDashboardPage from '../components/PartakerDashboardPage';
+import SearchPartakerPage from '../components/SearchPartakerPage';
+import EditPartakerPage from '../components/EditPartakerPage';
+
+
+export const history = createHistory();
 
 const AppRouter = () => (
-  <BrowserRouter>
+  <Router history={history}>
     <div>
-      <Header />
       <Switch>
-        <Route path="/" component={WelcomePage} exact={true} />
-        <Route path="/finances" component={FinancesDashboardPage} exact={true} />
-        <Route path="/create/folio" component={AddFolioPage} />
-        <Route path="/registry" component={PartakerDashboardPage} exact={true}/>
-        {/*<Route path="/create" component={AddExpensePage} exact={true} />*/}
-        <Route path="/edit/:id" component={EditPartakerPage} />
-        <Route path="/help" component={HelpPage} />
+      <PublicRoute path={routes.PUBLIC_WELCOME} component={PublicWelcomePage} exact={true} />
+      <PublicRoute path={routes.LOGIN} component={LoginPage} exact={true} />
+        
+        <PrivateRoute path={routes.PRIVATE_WELCOME} component={PrivateWelcomePage} exact={true} />
+
+        <AdminRoute path={routes.USERS} component={UsersDashboardPage} exact={true}/>
+        <AdminRoute path={routes.USERS_CREATE} component={AddUserPage} exact={true}/>
+        
+        <FinancesRoute path={routes.FINANCES} component={FinancesDashboardPage} exact={true} />
+        <FinancesRoute path={routes.CREATE_FOLIO} component={AddFolioPage} exact={true} />
+
+        <RegistryRoute path={routes.REGISTRY} component={SearchPartakerPage} exact={true}/>
+        <RegistryRoute path={routes.REGISTRY_DASHBOARD} component={PartakerDashboardPage} exact={true}/>
+        <RegistryRoute path={routes.EDIT_PARTAKER} component={EditPartakerPage} exact={true} />
+        
         <Route component={NotFoundPage} />
       </Switch>
     </div>
-  </BrowserRouter>
+  </Router>
 );
 
 export default AppRouter;
