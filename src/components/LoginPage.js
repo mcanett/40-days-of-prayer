@@ -4,9 +4,12 @@ import { startLogIn } from '../actions/auth';
 import * as routes from '../constants/routes';
 
 const LoginPage = ({ history }) => (
-  <div>
-    <h2>Inicio de sesión</h2>
-    <LoginForm history={history} />
+  <div className="box-layout box-layout__background">
+    <div className="box-layout__box">
+      {/*<h1 className="box-layout__title">Inicio de sesión</h1>*/}
+      <img src="/images/logo-192-gold.png" />
+      <LoginForm history={history} />
+    </div>
   </div>
 );
 
@@ -68,6 +71,7 @@ class LoginForm extends React.Component {
           onChange={this.handleChange}
           type="text"
           placeholder="Correo"
+          className="input-text"
         />
         <input
           id="password"
@@ -75,8 +79,9 @@ class LoginForm extends React.Component {
           onChange={this.handleChange}
           type="password"
           placeholder="Contraseña"
+          className="input-text"
         />
-        <button disabled={isInvalid} type="submit">
+        <button className="button" disabled={isInvalid} type="submit">
           Iniciar sesión
         </button>
         </form>
