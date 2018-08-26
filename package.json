@@ -1,6 +1,10 @@
 {
   "name": "fourty-days-of-prayer",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.11.2",
+    "yarn": "1.7.0"
+  },
   "main": "index.js",
   "author": "Moises Canett",
   "license": "MIT",
