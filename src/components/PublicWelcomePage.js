@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//import { IconContext } from 'react-icons';
-import { IoIosKey } from 'react-icons/io'
 import * as routes from '../constants/routes';
 
 const PublicWelcomePage = () => {
@@ -9,9 +7,6 @@ const PublicWelcomePage = () => {
     <div className="box-layout__background">
       <div className="box-layout__right-items">
         <Link to={routes.LOGIN}>
-          {/*<IconContext.Provider value={{ color: "#EABF60", className: "box-layout__icon"}}>
-            <IoIosKey />
-          </IconContext.Provider>*/}
           Inicio de Sesión
         </Link>
       </div>
