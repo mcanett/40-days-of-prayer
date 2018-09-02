@@ -29,30 +29,33 @@ export class SearchPartakerPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <SearchPartakerForm onSearch={this.onSearch}/>
-          <Modal
-            isOpen={this.state.openModal}
-            onRequestClose={this.onCloseModal}
-            contentLabel="Buscando participante"
-            shouldCloseOnOverlayClick={false}
-            closeTimeoutMS={200}
-            className="modal"
-            >
-            { this.state.partaker ? 
-              <div>
-                <h3 className="modal__title">¿Es usted?</h3>
-                {<h2 className="modal__body">{this.state.partaker.name.firstName} {this.state.partaker.name.lastName} {this.state.partaker.name.mothersSurname}</h2>}
-                <button className="button" onClick={this.onEdit}>Editar</button>
-                <button className="button" onClick={this.onCloseModal}>Cancelar</button>
-              </div>
-              :
-              <div>
-                <h3>No se encontro participante</h3>
-                <button onClick={this.onCloseModal}>Cerrar</button>
-              </div>
-            }
-          </Modal>
+      <div className="component">
+        <div className="component__container">
+          <h1 className="component__header">Busqueda del participante</h1>
+          <SearchPartakerForm onSearch={this.onSearch}/>
+            <Modal
+              isOpen={this.state.openModal}
+              onRequestClose={this.onCloseModal}
+              contentLabel="Buscando participante"
+              shouldCloseOnOverlayClick={false}
+              closeTimeoutMS={200}
+              className="modal"
+              >
+              { this.state.partaker ? 
+                <div>
+                  <h3 className="modal__title">¿Es usted?</h3>
+                  {<h2 className="modal__body">{this.state.partaker.name.firstName} {this.state.partaker.name.lastName} {this.state.partaker.name.mothersSurname}</h2>}
+                  <button className="button button__positive" onClick={this.onEdit}>Editar</button>
+                  <button className="button" onClick={this.onCloseModal}>Cancelar</button>
+                </div>
+                :
+                <div>
+                  <h3>No se encontro participante</h3>
+                  <button onClick={this.onCloseModal}>Cerrar</button>
+                </div>
+              }
+            </Modal>
+        </div>
       </div>
     );
   }

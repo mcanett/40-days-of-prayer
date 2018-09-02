@@ -245,80 +245,106 @@ export default class HostFacilitatorForm extends React.Component {
   render () {
     return (
       <div>
+        <div className="component__container">
+        <h1 className="component__header">Edita los datos de participante</h1>
         {this.state.basicError && <p style={{color: 'red'}}>{this.state.basicError}</p>}
         <form onSubmit={this.onSubmit}>
-          <div>
-            <input 
-              type="text"
-              placeholder="Nombre(s)"
-              autoFocus
-              value={this.state.firstName}
-              onChange={this.onFirstNameChange}
-            />
-            <input 
-              type="text"
-              placeholder="Apellido Paterno"
-              autoFocus
-              value={this.state.lastName}
-              onChange={this.onLastNameChange}
-            />
-            <input 
-              type="text"
-              placeholder="Apellido Materno"
-              autoFocus
-              value={this.state.mothersSurname}
-              onChange={this.onMothersSurnameChange}
-            />
+          <div className="input-group">
+            <div className="input-group__item">
+              <input 
+                type="text"
+                placeholder="Nombre(s)"
+                className="text-input"
+                value={this.state.firstName}
+                onChange={this.onFirstNameChange}
+              />
+            </div>
+            <div className="input-group__item">
+              <input 
+                type="text"
+                placeholder="Apellido Paterno"
+                className="text-input"
+                value={this.state.lastName}
+                onChange={this.onLastNameChange}
+              />
+            </div>
+            <div className="input-group__item">
+              <input 
+                type="text"
+                placeholder="Apellido Materno"
+                className="text-input"
+                value={this.state.mothersSurname}
+                onChange={this.onMothersSurnameChange}
+              />
+            </div>
           </div>
-          <div>
-            <input 
-              type="text"
-              placeholder="Teléfono"
-              autoFocus
-              value={this.state.phone}
-              onChange={this.onPhoneChange}
-            />
-            <input 
-              type="text"
-              placeholder="Edad"
-              value={this.state.age}
-              onChange={this.onAgeChange}
-            />
-            <select
-              value={this.state.gender}
-              onChange={this.onGenderChange}
-            >
-              <option value="H">Hombre</option>
-              <option value="M">Mujer</option>
-            </select>
+          <div className="input-group">
+            <div className="input-group__item">
+              <input 
+                type="text"
+                placeholder="Teléfono"
+                className="text-input"
+                value={this.state.phone}
+                onChange={this.onPhoneChange}
+              />
+            </div>
+            <div className="input-group__item">
+              <input 
+                type="text"
+                placeholder="Edad"
+                className="text-input"
+                value={this.state.age}
+                onChange={this.onAgeChange}
+              />
+            </div>
+            <div className="input-group__item">
+              <select
+                className="select"
+                value={this.state.gender}
+                onChange={this.onGenderChange}
+              >
+                <option value="H">Hombre</option>
+                <option value="M">Mujer</option>
+              </select>
+            </div>
           </div>
-          <div>
-            ¿Eres cristiano?
-            <input 
-              type="checkbox"
-              defaultValue={this.state.isChristian}
-              onChange={this.onIsChristianChange}
-              checked={this.state.isChristian}
-            />
+          <div className="input-group">
+            <div className="input-group__item component__center">
+              <div className="tag">¿Es cristiano?</div>
+              <input
+                id="isChristian"
+                type="checkbox"
+                className="regular-checkbox big-checkbox"
+                defaultValue={this.state.isChristian}
+                onChange={this.onIsChristianChange}
+                checked={this.state.isChristian}
+              /><label for="isChristian"></label>
+            </div>
             { this.state.isChristian &&
-            <select
+              <div className="input-group__item">
+              <select
+              className="select"
               value={this.state.congregateTime}
               onChange={this.onCongregateTimeChange}
-            >
+              >
               <option value="">--Tiempo de congregarse--</option>
               <option value="1-">Menos de 1 año</option>
               <option value="1-2">De 1 a 2 años</option>
               <option value="3-4">De 3 a 4 años</option>
               <option value="5+">5 años o más</option>
-            </select>
+              </select>
+              </div>
             }
             { this.state.isChristian &&
-            <input 
-              type="text"
-              placeholder="Congregación"
-              value={this.state.congregationName}
-              onChange={this.onCongregationNameChange}
-            />
+              <div className="input-group__item">
+                <input 
+                type="text"
+                placeholder="Congregación"
+                className="text-input"
+                value={this.state.congregationName}
+                onChange={this.onCongregationNameChange}
+              />
+              </div>
             }
           </div>
           {
@@ -328,107 +354,138 @@ export default class HostFacilitatorForm extends React.Component {
             </div>
           }
           <div>
-            ¿Será anfitrión?
+            <div className="tag">¿Será anfitrión?</div>
             <input 
+              id="isHost"
               type="checkbox"
+              className="regular-checkbox big-checkbox"
               defaultValue={this.state.isHost}
               onChange={this.onIsHostChange}
               checked={this.state.isHost}
-            />
+            /><label for="isHost"></label>
           { this.state.isHost &&
             <div>
               {this.state.hostError && <p style={{color: 'red'}}>{this.state.hostError}</p>}
-              <div>
-                <input 
-                  type="text"
-                  placeholder="Calle"
-                  value={this.state.streetName}
-                  onChange={this.onStreetNameChange}
-                />
-                <input 
-                  type="text"
-                  placeholder="Número"
-                  value={this.state.houseNumber}
-                  onChange={this.onHouseNumberChange}
-                />
-                <input 
-                  type="text"
-                  placeholder="Colonia"
-                  value={this.state.neighborhood}
-                  onChange={this.onNeighborhoodChange}
-                />
-                <input 
-                  type="text"
-                  placeholder="Código postal"
-                  value={this.state.zipCode}
-                  onChange={this.onZipCodeChange}
-                />
+              <div className="input-group">
+                <div className="input-group__item">
+                  <input 
+                    type="text"
+                    placeholder="Calle"
+                    className="text-input"
+                    value={this.state.streetName}
+                    onChange={this.onStreetNameChange}
+                  />
+                </div>
+                <div className="input-group__item">
+                  <input 
+                      type="text"
+                      placeholder="Número"
+                      className="text-input"
+                      value={this.state.houseNumber}
+                      onChange={this.onHouseNumberChange}
+                    />
+                </div>
+                <div className="input-group__item">
+                  <input 
+                    type="text"
+                    placeholder="Colonia"
+                    className="text-input"
+                    value={this.state.neighborhood}
+                    onChange={this.onNeighborhoodChange}
+                  />
+                </div>
+                <div className="input-group__item">
+                  <input 
+                    type="text"
+                    placeholder="Código postal"
+                    className="text-input"
+                    value={this.state.zipCode}
+                    onChange={this.onZipCodeChange}
+                  />
+                </div>
               </div>
-              <div>
-                <input 
-                  type="text"
-                  placeholder="Capacidad de la casa"
-                  value={this.state.houseCapacity}
-                  onChange={this.onHouseCapacityChange}
-                />
-                <input 
-                  type="text"
-                  placeholder="Lugares apartados"
-                  value={this.state.layaways}
-                  onChange={this.onLayawaysChange}
-                />
+              <div className="input-group">
+                <div className="input-group__item">
+                  <input 
+                    type="text"
+                    placeholder="Capacidad de la casa"
+                    className="text-input"
+                    value={this.state.houseCapacity}
+                    onChange={this.onHouseCapacityChange}
+                  />
+                </div>
+                <div className="input-group__item">
+                  <input 
+                    type="text"
+                    placeholder="Lugares apartados"
+                    className="text-input"
+                    value={this.state.layaways}
+                    onChange={this.onLayawaysChange}
+                  />
+                </div>
               </div>              
             </div>
           }
           </div>
           <div>
-            ¿Será facilitador?
-            <input 
-              type="checkbox"
-              defaultValue={this.state.isFacilitator}
-              onChange={this.onIsFacilitatorChange}
-              checked={this.state.isFacilitator}
-            />
+            <div>
+              <div className="tag">¿Será facilitador?</div>
+              <input 
+                id="isFacilitator"
+                type="checkbox"
+                className="regular-checkbox big-checkbox"
+                defaultValue={this.state.isFacilitator}
+                onChange={this.onIsFacilitatorChange}
+                checked={this.state.isFacilitator}
+              /><label for="isFacilitator"></label>
+            </div>
             { this.state.isFacilitator &&
               <div>
                 {this.state.facilitatorError && <p style={{color: 'red'}}>{this.state.facilitatorError}</p>}
-                <div>
-                  <input 
-                    type="text"
-                    placeholder="Tiempo en la fe"
-                    value={this.state.timeInFaith}
-                    onChange={this.onTimeInFaithChange}
-                  />
-                  <input 
-                    type="text"
-                    placeholder="Tiempo en Cedes"
-                    value={this.state.cedesCongregateTime}
-                    onChange={this.onCedesCongregateTimeChange}
-                  />
+                <div className="input-group">
+                  <div className="input-group__item">
+                    <input 
+                      type="text"
+                      placeholder="Tiempo en la fe"
+                      className="text-input"
+                      value={this.state.timeInFaith}
+                      onChange={this.onTimeInFaithChange}
+                    />
+                  </div>
+                  <div className="input-group__item">
+                    <input 
+                      type="text"
+                      placeholder="Tiempo en Cedes"
+                      className="text-input"
+                      value={this.state.cedesCongregateTime}
+                      onChange={this.onCedesCongregateTimeChange}
+                    />
+                  </div>
                 </div>
               </div>
             }
           </div>
-          <button>Guardar Participante</button>
+          <button className="button button__positive">Guardar Participante</button>
+          </form> 
+          </div>
           { (this.state.isHost) &&
             <div>
-                <LocateHouseMap 
-                  isMarkerShown={this.state.isMarkerShown}
-                  markerPosition={{lat: this.state.lat, lng: this.state.lng}}
-                  onMapClick={this.onMapClick}
-                />
+            <LocateHouseMap 
+            isMarkerShown={this.state.isMarkerShown}
+            markerPosition={{lat: this.state.lat, lng: this.state.lng}}
+            onMapClick={this.onMapClick}
+            />
             </div>
           }
           { (this.state.isFacilitator && !this.state.isHost) &&
             <div>
-              <MapWithHouses 
-                houseId={this.props.partaker.houseId ? this.props.partaker.houseId : undefined}
-                hosts={this.props.hosts}
-                onMarkerClick={this.onMarkerClick}
-              />
+            <MapWithHouses 
+            houseId={this.props.partaker.houseId ? this.props.partaker.houseId : undefined}
+            hosts={this.props.hosts}
+            onMarkerClick={this.onMarkerClick}
+            />
             </div>
           }
-        </form> 
       </div>
     );
   }

@@ -3,6 +3,7 @@ export const LOGIN = "/login";
 export const HELP = "/help";
 
 export const PRIVATE_WELCOME = "/privateWelcome";
+export const CHANGE_PASSWORD = "/changePassword";
 
 export const USERS = "/users";
 export const USERS_CREATE = "/users/create";

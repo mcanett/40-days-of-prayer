@@ -17,16 +17,16 @@ export class EditPartakerPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Ingresa los datos de participante</h1>
+      <div className="component">
         <HostFacilitatorForm
           hosts={this.props.hosts}
           partaker={this.props.partaker}
           onSubmit={this.onSubmit}
         />
-        <button 
+        {/*<button
+          className="button button__danger"
           onClick={this.onRemove}
-        >Eliminar Participante</button>
+        >Eliminar Participante</button>*/}
       </div>
     );
   }

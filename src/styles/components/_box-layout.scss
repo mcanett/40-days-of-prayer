@@ -1,14 +1,14 @@
 .box-layout {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
-.box-layout__background {
   background: url('/images/laguna-bg.jpg');
   background-size: cover;
+  display: flex;
   height: 100vh;
+  justify-content: center;
   width: 100vw;
+}
+
+.box-layout__center {
+  align-items: center;
 }
 
 .box-layout__box {
@@ -20,10 +20,11 @@
 }
 
 .box-layout__box-transparent {
+  color: white;
   padding: $l-size $m-size;
   text-align: center;
+  text-shadow: 2px 2px $dark-gray;
   width: 100vw;
-  color: white;
 }
 
 .box-layout__title {
@@ -38,11 +39,7 @@
 .box-layout__right-items {
   align-items: right;
   justify-content: right;
-  margin: 0 0 $l-size 0;
-  padding: $s-size $s-size 0 0;
+  /*margin: 0 0 $l-size 0; 
+  padding: $s-size $s-size 0 0;*/
   text-align: right;
-}
-
-.box-layout__icon {
-  size: $l-size;
 }

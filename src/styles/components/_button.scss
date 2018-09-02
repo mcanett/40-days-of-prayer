@@ -1,9 +1,29 @@
 .button {
-  background: $green;
+  background: $gray;
   border: none;
   color: white;
   font-size: $font-size-large;
   font-weight: 300;
   margin: $xs-size;
   padding: $s-size;
+  text-decoration: none;
+}
+
+.button__positive {
+  background: $green;
+}
+
+.button__danger {
+  background: $danger;
+}
+
+.button--link {
+  background: none;
+  border: none;
+  color: blue;
+  text-decoration: underline;
+}
+
+.button--link:active {
+  color: red;
 }

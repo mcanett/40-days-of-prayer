@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 
 export const PrivateWelcomePage = (props) => {
   return (
-    <div>
-      <h1>Bienvenido(a) {props.user.userName} </h1>
-      <h2>40 días de oración</h2>
-      <h3>Cedes comunidad cristiana. Mexicali, B.C.</h3>
+    <div className="component component__center">
+      <div className="big-message">
+        <h1>Bienvenido a la campaña</h1>
+        <h2 className="component__header">Le atiende {props.user.userName}</h2>
+      </div>
     </div>
   );
 };

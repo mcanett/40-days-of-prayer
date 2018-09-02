@@ -61,6 +61,6 @@ export const startPasswordReset = (email) => (
 
 // Password Change
 export const startPasswordUpdate = (password) => (
-  auth.currentUser.updatePassword(password)
+  authProvider.currentUser.updatePassword(password)
 );
 

@@ -4,7 +4,7 @@ import { startLogIn } from '../actions/auth';
 import * as routes from '../constants/routes';
 
 const LoginPage = ({ history }) => (
-  <div className="box-layout box-layout__background">
+  <div className="box-layout box-layout__center">
     <div className="box-layout__box">
       {/*<h1 className="box-layout__title">Inicio de sesión</h1>*/}
       <img src="/images/logo-192-gold.png" />
@@ -67,21 +67,21 @@ class LoginForm extends React.Component {
         <form onSubmit={this.onSubmit}>
         <input
           id="email"
+          className="text-input"
           value={email}
           onChange={this.handleChange}
           type="text"
           placeholder="Correo"
-          className="input-text"
         />
         <input
           id="password"
+          className="text-input"
           value={password}
           onChange={this.handleChange}
           type="password"
           placeholder="Contraseña"
-          className="input-text"
         />
-        <button className="button" disabled={isInvalid} type="submit">
+        <button className="button button__positive" disabled={isInvalid} type="submit">
           Iniciar sesión
         </button>
         </form>

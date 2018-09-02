@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import FolioModal from './FolioModal';
 import FinancesList from './FinancesList';
@@ -22,12 +22,10 @@ export class FinancesDashboardPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <NavLink to={routes.CREATE_FOLIO} activeClassName="is-active">Crear Folio</NavLink>
-        </div>
-        <div>
+      <div className="component">
+        <div className="component__container">
           <FinancesSummary />
+          <Link className="button button__positive" to={routes.CREATE_FOLIO}>Crear Folio</Link>
           <FinancesListFilters />
           <FinancesList />
         </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { generate, exist } from '../utils/folio';
 
 export default class PartakerNameForm extends React.Component {
   constructor(props) {
@@ -86,7 +85,7 @@ export default class PartakerNameForm extends React.Component {
             value={this.state.mothersSurname}
             onChange={this.onMothersSurnameChange}
           />
-          <button>Crear folio</button>
+          <button className="button">Crear folio</button>
         </form> 
       </div>
     );

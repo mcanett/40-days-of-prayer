@@ -14,6 +14,7 @@ import LoginPage from '../components/LoginPage';
 import NotFoundPage from '../components/NotFoundPage';
 
 import PrivateWelcomePage from '../components/PrivateWelcomePage';
+import ChangePasswordPage from '../components/ChangePasswordPage';
 
 import UsersDashboardPage from '../components/UsersDashboardPage';
 import AddUserPage from '../components/AddUserPage';
@@ -36,6 +37,7 @@ const AppRouter = () => (
       <PublicRoute path={routes.LOGIN} component={LoginPage} exact={true} />
         
         <PrivateRoute path={routes.PRIVATE_WELCOME} component={PrivateWelcomePage} exact={true} />
+        <PrivateRoute path={routes.CHANGE_PASSWORD} component={ChangePasswordPage} exact={true} />
 
         <AdminRoute path={routes.USERS} component={UsersDashboardPage} exact={true}/>
         <AdminRoute path={routes.USERS_CREATE} component={AddUserPage} exact={true}/>

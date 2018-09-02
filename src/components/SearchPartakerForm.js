@@ -27,11 +27,12 @@ export default class SearchPartakerForm extends React.Component {
           <input
             type="text"
             placeholder="Folio / Nombre"
+            className="text-input"
             value={this.state.partakerText}
             onChange={this.onPartakerChange}
             autoFocus={true}
           />
-          <button>Buscar</button>
+          <button className="button button__positive">Buscar</button>
         </form>
       </div>
     );

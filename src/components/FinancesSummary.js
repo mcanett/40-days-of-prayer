@@ -10,8 +10,8 @@ export const FinancesSummary = ({ financesCount, financesTotal }) => {
   return (
     <div>
       {
-        <h2>
-          Viendo {financesCount} {financesWord} con un total de {formattedTotal} dólares.
+        <h2 className="component__header">
+          Viendo <span>{financesCount}</span> {financesWord} con un total de <span>{formattedTotal}</span> dólares.
         </h2>
       }
     </div>

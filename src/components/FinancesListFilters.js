@@ -28,35 +28,43 @@ export class FinancesListFilters extends React.Component {
 
   render() {
     return (
-      <div>
-        <select
-          value={this.props.filters.prefix}
-          onChange={this.onPrefixChange}
-        >
-          <option value="" >Todos</option>
-          <option value="P">Pagado</option>
-          <option value="D">Donado</option>
-          <option value="A">Autorizado</option>
-        </select>
-        <input
-          type="text"
-          placeholder="Nombre"
-          value={this.props.filters.text}
-          onChange={this.onTextChange}
-        />
-        <DateRangePicker
-          startDate={this.props.filters.startDate}
-          endDate={this.props.filters.endDate}
-          onDatesChange={this.onDatesChange}
-          focusedInput={this.state.calendarFocused}
-          onFocusChange={this.onFocusChange}
-          showClearDates={true}
-          numberOfMonths={1}
-          isOutsideRange={() => false}
-          startDatePlaceholderText={'Fecha Inicio'}
-          endDatePlaceholderText={'Fecha Fin'}
-          displayFormat={'DD/MM/YYYY'}
-        />
+      <div className="input-group">
+        <div className="input-group__item">
+          <select
+            className="select"
+            value={this.props.filters.prefix}
+            onChange={this.onPrefixChange}
+          >
+            <option value="" >Todos</option>
+            <option value="P">Pagado</option>
+            <option value="D">Donado</option>
+            <option value="A">Autorizado</option>
+          </select>
+        </div>
+        <div className="input-group__item">
+          <input
+            type="text"
+            placeholder="Nombre"
+            className="text-input"
+            value={this.props.filters.text}
+            onChange={this.onTextChange}
+          />
+        </div>
+        <div className="input-group__item">
+          <DateRangePicker
+            startDate={this.props.filters.startDate}
+            endDate={this.props.filters.endDate}
+            onDatesChange={this.onDatesChange}
+            focusedInput={this.state.calendarFocused}
+            onFocusChange={this.onFocusChange}
+            showClearDates={true}
+            numberOfMonths={1}
+            isOutsideRange={() => false}
+            startDatePlaceholderText={'Fecha Inicio'}
+            endDatePlaceholderText={'Fecha Fin'}
+            displayFormat={'DD/MM/YYYY'}
+          />
+        </div>
       </div>
     );
   }

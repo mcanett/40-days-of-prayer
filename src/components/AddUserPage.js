@@ -4,7 +4,7 @@ import { startSignUp, saveUserInfo } from '../actions/auth';
 import * as routes from '../constants/routes';
 
 const AddUserPage = () => (
-  <div>
+  <div className="component">
     <h1>Registra un usuario</h1>
     <AddUserForm />
   </div>

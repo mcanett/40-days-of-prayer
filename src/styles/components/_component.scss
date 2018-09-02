@@ -1,0 +1,33 @@
+
+.component{
+  background: $lightest-gray;
+  border-width: 0 3px 0 3px;
+  border-style: solid;
+  border-color: $sand;
+  min-height: 80vh;
+
+  h1, h2 {
+    margin: 0;
+    padding: $m-size 0 $m-size 0;
+  }
+}
+
+.component__container {
+  margin: 0 auto;
+  padding: $m-size $m-size;
+  max-width: 85rem;
+}
+
+.component__header {
+  font-weight: 300;
+  span {
+    font-weight: bold;
+  }
+}
+
+.component__center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

@@ -1,0 +1,60 @@
+.header {
+  align-items: center;
+  background: url('/images/laguna-bg.jpg');
+  background-size: cover;
+  width: 100%;
+}
+
+.header__title-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__title-box-logo {
+  margin: $m-size $m-size 0 $m-size;
+}
+
+.header__title-user-name {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 0 $m-size 0 0;
+  text-align: center;
+}
+
+
+.header__navigation-box {
+  display: flex;
+}
+
+.header__navigation-item {
+  background: $gray;
+  border-width: 0 0 3px;
+  border-radius: 10px 10px 0 0;
+  border-style: solid;
+  border-color: $sand;
+  color: $dark-gray;
+  margin: $m-size 0 0 0;
+  padding: $xs-size $m-size $xs-size $m-size;
+  text-decoration: inherit;
+  
+}
+
+.header__navigation-item:active {
+  background: $light-gray;
+  color: inherit;
+}
+
+.is-active {
+  background: $lightest-gray;
+  border-width: 3px 3px 0 3px;
+  border-style: solid;
+  border-color: $sand;
+}
+
+.header__navigation-box-extra-panel {
+  border-width: 0 0 3px 0;
+  border-style: solid;
+  border-color: $sand;
+  width: 100%;
+}
