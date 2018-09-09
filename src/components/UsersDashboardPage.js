@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import UsersListFilters from './UsersListFilters';
+import UsersList from './UsersList';
 
 const UsersDashboardPage = () => (
   <div className="component">
     <div className="component__container">
-      <Link className="button button__positive" to="/users/create">Crear usuario</Link>
-      <p>This is my user dashboard page</p>
+      <UsersListFilters />
+      <UsersList />
     </div>
   </div>
 );

@@ -26,7 +26,7 @@ export default class MarkerWithInfo extends React.Component {
         {this.state.isOpen &&
             <InfoWindow position={{ lat: host.hostInfo.location.lat, lng: host.hostInfo.location.lng }}
                         onCloseClick={() => this.onMarkerClick()}>
-              <div>
+              <div className="info-window">
                 <h4>Anfitrión:</h4> 
                 <h3>{`${host.name.firstName} ${host.name.lastName} ${host.name.mothersSurname}`}</h3>
                 <h4>Dirección:</h4>

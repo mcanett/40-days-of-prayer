@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PartakerListItem from './PartakerListItem';
-import selectPartakers from '../selectors/partakers';
+import selectPartakers from '../selectors/finances-partakers';
 
 export const PartakerList = (props) => (
   <div>

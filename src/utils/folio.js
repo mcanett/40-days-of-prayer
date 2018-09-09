@@ -1,4 +1,3 @@
-import database from '../firebase/firebase';
 
 const folio = {
   generate: (prefix) => {

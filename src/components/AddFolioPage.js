@@ -13,10 +13,12 @@ export class AddFolioPage extends React.Component {
   render() {
     return (
       <div className="component">
-        <h1 className="component__header">Creación de folio</h1>
-        <PartakerNameForm
-          onSubmit={this.onSubmit}
-        />
+        <div className="component__container">
+          <h1 className="component__header">Creación de folio</h1>
+          <PartakerNameForm
+            onSubmit={this.onSubmit}
+          />
+        </div>
       </div>
     );
   }

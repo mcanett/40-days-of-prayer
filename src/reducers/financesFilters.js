@@ -1,13 +1,13 @@
 import moment from 'moment';
 
-const filtersReducerDefaultState = {
+const financesFiltersReducerDefaultState = {
   text: '',
   sortBy: 'date',
   startDate: moment().startOf('day'),
   endDate: moment().endOf('day'),
   prefix: ''
 };
-export default (state = filtersReducerDefaultState, action) => {
+export default (state = financesFiltersReducerDefaultState, action) => {
   switch(action.type) {
     case 'SET_TEXT_FILTER':
     return {

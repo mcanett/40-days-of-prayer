@@ -32,6 +32,8 @@ const dataExample =
       x, // cordenada x
       y // coordenada y
     },
+    number,
+    houseSchedule, // horario de la casa
     houseCapacity, // cap. de la casa
     layaways, // num. de apartados
   },

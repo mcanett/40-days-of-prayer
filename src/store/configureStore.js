@@ -2,8 +2,10 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import partakersReducer from '../reducers/partakers'
 import lastPartakerReducer from '../reducers/lastPartaker';
-import filtersReducer from '../reducers/filters';
+import financesFiltersReducer from '../reducers/financesFilters';
 import authReducer from '../reducers/auth';
+import usersReducer from '../reducers/users';
+import userFiltersReducer from '../reducers/userFilters';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -13,8 +15,10 @@ export default () => {
     combineReducers({
       lastPartaker: lastPartakerReducer,
       partakers: partakersReducer,
-      filters: filtersReducer,
-      auth: authReducer
+      financesFilters: financesFiltersReducer,
+      auth: authReducer,
+      users: usersReducer,
+      userFilters: userFiltersReducer
     }),
     composeEnhancers(applyMiddleware(thunk)),
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

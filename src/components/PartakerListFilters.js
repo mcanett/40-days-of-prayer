@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates';
-import { setTextFilter, setStartDate, setEndDate, setPrefix } from '../actions/filters';
+import { setTextFilter, setStartDate, setEndDate, setPrefix } from '../actions/financesFilters';
 
 export class ExpenseListFilters extends React.Component {
   state = {
@@ -62,7 +62,7 @@ export class ExpenseListFilters extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  filters: state.filters
+  filters: state.financesFilters
 });
 
 const mapDispatchToProps = (dispatch) => ({

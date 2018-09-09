@@ -1,13 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import FinancesListItem from './FinancesListItem';
-import selectPartakers from '../selectors/partakers';
+import selectPartakers from '../selectors/finances-partakers';
 
 export const FinancesList = (props) => (
   <div>
+    <div className="list-header">
+      <div className="show-for-mobile">Participantes</div>
+      <div className="show-for-desktop list-item__name">Participante</div>
+      <div className="show-for-desktop list-item__type">Tipo</div>
+      <div className="show-for-desktop list-item__creation-date">Fecha</div>
+    </div>
     {
       props.partakers.length === 0 ? (
-        <p>Ningun participante</p>
+        <div className="list-item__empty">
+          Ningun participante
+        </div>
       ) : (
         props.partakers.map((partaker, index) => 
           <FinancesListItem 
@@ -23,7 +31,7 @@ export const FinancesList = (props) => (
 
 const mapStateToProps = (state) => {
   return {
-    partakers: selectPartakers(state.partakers, state.filters)
+    partakers: selectPartakers(state.partakers, state.financesFilters)
   };
 };
 

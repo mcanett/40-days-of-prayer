@@ -40,7 +40,7 @@ const AppRouter = () => (
         <PrivateRoute path={routes.CHANGE_PASSWORD} component={ChangePasswordPage} exact={true} />
 
         <AdminRoute path={routes.USERS} component={UsersDashboardPage} exact={true}/>
-        <AdminRoute path={routes.USERS_CREATE} component={AddUserPage} exact={true}/>
+        <AdminRoute path={routes.CREATE_USER} component={AddUserPage} exact={true}/>
         
         <FinancesRoute path={routes.FINANCES} component={FinancesDashboardPage} exact={true} />
         <FinancesRoute path={routes.CREATE_FOLIO} component={AddFolioPage} exact={true} />

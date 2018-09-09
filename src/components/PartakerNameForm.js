@@ -58,34 +58,52 @@ export default class PartakerNameForm extends React.Component {
       <div>
         {this.state.error && <p style={{color: 'red'}}>{this.state.error}</p>}
         <form onSubmit={this.onSubmit}>
-          <select
-            value={this.state.prefix}
-            onChange={this.onPrefixChange}
-          >
-            <option value="P">Pagado</option>
-            <option value="D">Donado</option>
-            <option value="A">Autorizado</option>
-          </select>
-          <input 
-            type="text"
-            placeholder="Nombre(s)"
-            value={this.state.firstName}
-            onChange={this.onFirstNameChange}
-          />
-          <input 
-            type="text"
-            placeholder="Apellido Paterno"
-            autoFocus
-            value={this.state.lastName}
-            onChange={this.onLastNameChange}
-          />
-          <input 
-            type="text"
-            placeholder="Apellido Materno"
-            value={this.state.mothersSurname}
-            onChange={this.onMothersSurnameChange}
-          />
-          <button className="button">Crear folio</button>
+          <div className="input-group">
+            <div className="input-group__item">
+              <select
+                className="select"
+                value={this.state.prefix}
+                onChange={this.onPrefixChange}
+              >
+                <option value="P">Pagado</option>
+                <option value="D">Donado</option>
+                <option value="A">Autorizado</option>
+              </select>
+            </div>
+            <div className="input-group__item">
+              <input 
+                className="text-input"
+                type="text"
+                placeholder="Nombre(s)"
+                value={this.state.firstName}
+                onChange={this.onFirstNameChange}
+              />
+            </div>
+            <div className="input-group__item">
+              <input
+                className="text-input"
+                type="text"
+                placeholder="Apellido Paterno"
+                autoFocus
+                value={this.state.lastName}
+                onChange={this.onLastNameChange}
+              />
+            </div>
+            <div className="input-group__item">
+              <input
+                className="text-input"
+                type="text"
+                placeholder="Apellido Materno"
+                value={this.state.mothersSurname}
+                onChange={this.onMothersSurnameChange}
+              />
+            </div>
+          </div>
+          <div className="input-group">
+            <div className="input-group__item">
+              <button className="button button__positive">Crear folio</button>
+            </div>
+          </div>
         </form> 
       </div>
     );

@@ -143,11 +143,27 @@ export const editPartaker = (id, updates) => ({
 
 export const startEditPartaker = (id, updates) => {
   return (dispatch) => {
+    /*
+    if (updates.hostInfo && !updates.hostInfo.numberLabel) {
+      return database.ref('numberLabel').transaction((numberLabel) => {
+        return numberLabel + 1;
+      }).then((numberLabel) => {
+        console.log('outside label: ', numberLabel)
+        updates.hostInfo.numberLabel = numberLabel;
+        console.log('updates: ', updates);
+        return database.ref(`partakers/${id}`).set(updates).then(() => {
+          dispatch(editPartaker(id, updates));
+        });
+      });
+    }*/
+
     return database.ref(`partakers/${id}`).set(updates).then(() => {
       dispatch(editPartaker(id, updates));
     });
   };
 };
+
+
 
 // SET_PARTAKERS
 export const setPartakers = (partakers) => ({

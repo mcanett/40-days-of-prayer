@@ -25,6 +25,7 @@ export default class HostFacilitatorForm extends React.Component {
       zipCode: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.address.zipCode : '' : '',
       lat: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.location.lat : null : null,
       lng: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.location.lng : null : null,
+      houseSchedule: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.houseSchedule : '' : '',
       houseCapacity: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.houseCapacity : '' : '',
       layaways: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.layaways : '' : '',
       timeInFaith: props.partaker ? props.partaker.facilitatorInfo ? props.partaker.facilitatorInfo.timeInFaith : '' : '', 
@@ -115,6 +116,11 @@ export default class HostFacilitatorForm extends React.Component {
     this.setState(() => ({ zipCode }));
   };
 
+  onHouseScheduleChange = (e) => {
+    const houseSchedule = e.target.value;
+    this.setState(() => ({ houseSchedule }));
+  };
+
   onHouseCapacityChange = (e) => {
     const houseCapacity = e.target.value;
     if (!houseCapacity || houseCapacity.match(/^\d{1,2}$/)) {
@@ -178,7 +184,7 @@ export default class HostFacilitatorForm extends React.Component {
     // Checking for host errors
     if (this.state.isHost) {
       if (!this.state.streetName || !this.state.houseNumber || !this.state.neighborhood || !this.state.zipCode
-        || !this.state.lat || !this.state.lng || !this.state.houseCapacity || !this.state.layaways) {
+        || !this.state.lat || !this.state.lng || !this.state.houseSchedule || !this.state.houseCapacity || !this.state.layaways) {
           this.setState(() => ({ hostError: 'Por favor, llene todos los datos de anfitrión' }));
           error = true;
       } else { this.setState(() => ({ hostError: '' })); } 
@@ -220,6 +226,7 @@ export default class HostFacilitatorForm extends React.Component {
               lat: this.state.lat,
               lng: this.state.lng
             },
+            houseSchedule: this.state.houseSchedule,
             houseCapacity: parseInt(this.state.houseCapacity),
             layaways: parseInt(this.state.layaways)
           }
@@ -318,7 +325,7 @@ export default class HostFacilitatorForm extends React.Component {
                 defaultValue={this.state.isChristian}
                 onChange={this.onIsChristianChange}
                 checked={this.state.isChristian}
-              /><label for="isChristian"></label>
+              /><label htmlFor="isChristian"></label>
             </div>
             { this.state.isChristian &&
               <div className="input-group__item">
@@ -327,11 +334,11 @@ export default class HostFacilitatorForm extends React.Component {
               value={this.state.congregateTime}
               onChange={this.onCongregateTimeChange}
               >
-              <option value="">--Tiempo de congregarse--</option>
-              <option value="1-">Menos de 1 año</option>
-              <option value="1-2">De 1 a 2 años</option>
-              <option value="3-4">De 3 a 4 años</option>
-              <option value="5+">5 años o más</option>
+                <option value="">--Tiempo de congregarse--</option>
+                <option value="1-">Menos de 1 año</option>
+                <option value="1-2">De 1 a 2 años</option>
+                <option value="3-4">De 3 a 4 años</option>
+                <option value="5+">5 años o más</option>
               </select>
               </div>
             }
@@ -362,7 +369,7 @@ export default class HostFacilitatorForm extends React.Component {
               defaultValue={this.state.isHost}
               onChange={this.onIsHostChange}
               checked={this.state.isHost}
-            /><label for="isHost"></label>
+            /><label htmlFor="isHost"></label>
           { this.state.isHost &&
             <div>
               {this.state.hostError && <p style={{color: 'red'}}>{this.state.hostError}</p>}
@@ -406,6 +413,28 @@ export default class HostFacilitatorForm extends React.Component {
               </div>
               <div className="input-group">
                 <div className="input-group__item">
+                  <select
+                  className="select"
+                  value={this.state.houseSchedule}
+                  onChange={this.onHouseScheduleChange}
+                  >
+                    <option value="">--Horario--</option>
+                    <option value="9:00am">9:00am</option>
+                    <option value="10:00am">10:00am</option>
+                    <option value="11:00am">11:00am</option>
+                    <option value="12:00am">12:00am</option>
+                    <option value="1:00pm">1:00pm</option>
+                    <option value="2:00pm">2:00pm</option>
+                    <option value="3:00pm">3:00pm</option>
+                    <option value="4:00pm">4:00pm</option>
+                    <option value="5:00pm">5:00pm</option>
+                    <option value="6:00pm">6:00pm</option>
+                    <option value="7:00pm">7:00pm</option>
+                    <option value="8:00pm">8:00pm</option>
+                    <option value="9:00pm">9:00pm</option>
+                  </select>
+                </div>
+                <div className="input-group__item">
                   <input 
                     type="text"
                     placeholder="Capacidad de la casa"
@@ -437,29 +466,37 @@ export default class HostFacilitatorForm extends React.Component {
                 defaultValue={this.state.isFacilitator}
                 onChange={this.onIsFacilitatorChange}
                 checked={this.state.isFacilitator}
-              /><label for="isFacilitator"></label>
+              /><label htmlFor="isFacilitator"></label>
             </div>
             { this.state.isFacilitator &&
               <div>
                 {this.state.facilitatorError && <p style={{color: 'red'}}>{this.state.facilitatorError}</p>}
                 <div className="input-group">
                   <div className="input-group__item">
-                    <input 
-                      type="text"
-                      placeholder="Tiempo en la fe"
-                      className="text-input"
-                      value={this.state.timeInFaith}
-                      onChange={this.onTimeInFaithChange}
-                    />
+                    <select
+                    className="select"
+                    value={this.state.timeInFaith}
+                    onChange={this.onTimeInFaithChange}
+                    >
+                      <option value="">--Tiempo en la fe--</option>
+                      <option value="1">1 año</option>
+                      <option value="2-3">De 2 a 3 años</option>
+                      <option value="4-5">De 4 a 5 años</option>
+                      <option value="6+">6 años o más</option>
+                    </select>
                   </div>
                   <div className="input-group__item">
-                    <input 
-                      type="text"
-                      placeholder="Tiempo en Cedes"
-                      className="text-input"
-                      value={this.state.cedesCongregateTime}
-                      onChange={this.onCedesCongregateTimeChange}
-                    />
+                    <select
+                    className="select"
+                    value={this.state.cedesCongregateTime}
+                    onChange={this.onCedesCongregateTimeChange}
+                    >
+                      <option value="">--Tiempo en Cedes--</option>
+                      <option value="1">1 año</option>
+                      <option value="2-3">De 2 a 3 años</option>
+                      <option value="4-5">De 4 a 5 años</option>
+                      <option value="6+">6 años o más</option>
+                    </select>
                   </div>
                 </div>
               </div>

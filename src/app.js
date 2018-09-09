@@ -8,6 +8,7 @@ import { firebase } from './firebase/firebase';
 
 import * as routes from './constants/routes';
 import { startSetPartakers } from './actions/partakers';
+import { startSetUsers } from './actions/users';
 import { logout, getUserInfo } from './actions/auth';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
@@ -44,6 +45,7 @@ firebase.auth().onAuthStateChanged((user) => {
   const pathName = history.location.pathname;
   if (user) {
     store.dispatch(getUserInfo(user.uid));
+    store.dispatch(startSetUsers());
     store.dispatch(startSetPartakers()).then(() => {
       renderApp();
       if (pathName === routes.LOGIN || pathName === routes.PUBLIC_WELCOME) {

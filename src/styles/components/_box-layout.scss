@@ -17,13 +17,19 @@
   padding: $l-size $m-size;
   text-align: center;
   width: 30rem;
+  button {
+    margin: $s-size 0;
+  }
+  input {
+    margin-bottom: $xs-size;
+  }
 }
 
 .box-layout__box-transparent {
   color: white;
   padding: $l-size $m-size;
   text-align: center;
-  text-shadow: 2px 2px $dark-gray;
+  text-shadow: 2px 2px $darkest-gray;
   width: 100vw;
 }
 

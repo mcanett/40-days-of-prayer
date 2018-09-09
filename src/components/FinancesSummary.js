@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import numeral from 'numeral';
-import selectPartakers from '../selectors/partakers';
+import selectPartakers from '../selectors/finances-partakers';
 import selectFinancesTotal from '../selectors/finances-total';
 
 export const FinancesSummary = ({ financesCount, financesTotal }) => {
@@ -19,7 +19,7 @@ export const FinancesSummary = ({ financesCount, financesTotal }) => {
 };
 
 const mapStateToProps = (state) => {
-  const visiblePartakers = selectPartakers(state.partakers, state.filters);
+  const visiblePartakers = selectPartakers(state.partakers, state.financesFilters);
   return {
     financesCount: visiblePartakers.length,
     financesTotal: selectFinancesTotal(visiblePartakers)

@@ -1,7 +1,8 @@
 import moment from 'moment';
+import replaceLetters from '../utils/replaceLetters';
 
 
-// Get visible partakers
+// Get visible finances partakers
 export default (partakers, { text, sortBy, startDate, endDate, prefix }) => {
   return partakers.filter((partaker) => {
 
@@ -12,8 +13,7 @@ export default (partakers, { text, sortBy, startDate, endDate, prefix }) => {
     const startDateMatch = startDate ? startDate.isSameOrBefore(createdAtMoment, 'day') : true ;
     const endDateMatch = endDate ? endDate.isSameOrAfter(createdAtMoment, 'day') : true;
     const textMatch = typeof text !== 'string' 
-      || fullName.toLowerCase().includes(text.toLowerCase()) 
-      || partaker.folio.toLowerCase().includes(text.toLowerCase());
+      || replaceLetters(fullName.replace(/ /g,'')).toLowerCase().includes(replaceLetters(text.replace(/ /g,'').toLowerCase()));
     const prefixMatch = partaker.folio.includes(prefix);
 
     return startDateMatch && endDateMatch && textMatch && prefixMatch;

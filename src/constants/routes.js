@@ -6,7 +6,7 @@ export const PRIVATE_WELCOME = "/privateWelcome";
 export const CHANGE_PASSWORD = "/changePassword";
 
 export const USERS = "/users";
-export const USERS_CREATE = "/users/create";
+export const CREATE_USER = "/users/create";
 
 export const FINANCES = "/finances";
 export const CREATE_FOLIO = "/create/folio";
