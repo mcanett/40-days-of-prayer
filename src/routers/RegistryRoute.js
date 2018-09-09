@@ -12,7 +12,7 @@ export const RegistryRoute = ({
   ...rest
 }) => (
   <Route {...rest} component={(props) => (
-    isAuthenticated && (userType == 'admin' || userType == 'registry') ? (
+    isAuthenticated && (userType == 'admin' || userType == 'registry' || userType == 'supervisor') ? (
       <div>
         <Header />
         <Component {...props} />
