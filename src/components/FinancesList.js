@@ -8,7 +8,7 @@ export const FinancesList = (props) => (
     <div className="list-header">
       <div className="show-for-mobile">Participantes</div>
       <div className="show-for-desktop list-item__name">Participante</div>
-      <div className="show-for-desktop list-item__type">Tipo</div>
+      <div className="show-for-desktop list-item__type">Folio</div>
       <div className="show-for-desktop list-item__creation-date">Fecha</div>
     </div>
     {

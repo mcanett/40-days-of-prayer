@@ -22,12 +22,13 @@ export default class HostFacilitatorForm extends React.Component {
       streetName: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.address.streetName : '' : '',
       houseNumber: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.address.houseNumber : '' : '',
       neighborhood: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.address.neighborhood : '' : '',
-      zipCode: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.address.zipCode : '' : '',
+      zipCode: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.address.zipCode.toString() : '' : '',
       lat: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.location.lat : null : null,
       lng: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.location.lng : null : null,
       houseSchedule: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.houseSchedule : '' : '',
       houseCapacity: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.houseCapacity : '' : '',
-      layaways: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.layaways : '' : '',
+      numberLabel: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.numberLabel : undefined : undefined,
+      layaways: props.partaker ? props.partaker.hostInfo ? props.partaker.hostInfo.layaways.toString() : '' : '',
       timeInFaith: props.partaker ? props.partaker.facilitatorInfo ? props.partaker.facilitatorInfo.timeInFaith : '' : '', 
       cedesCongregateTime: props.partaker ? props.partaker.facilitatorInfo ? props.partaker.facilitatorInfo.cedesCongregateTime : '' : '', 
       
@@ -184,9 +185,12 @@ export default class HostFacilitatorForm extends React.Component {
     // Checking for host errors
     if (this.state.isHost) {
       if (!this.state.streetName || !this.state.houseNumber || !this.state.neighborhood || !this.state.zipCode
-        || !this.state.lat || !this.state.lng || !this.state.houseSchedule || !this.state.houseCapacity || !this.state.layaways) {
+        || !this.state.houseSchedule || !this.state.houseCapacity || !this.state.layaways) {
           this.setState(() => ({ hostError: 'Por favor, llene todos los datos de anfitrión' }));
           error = true;
+      } else if(!this.state.lat || !this.state.lng){
+        this.setState(() => ({ hostError: 'Por favor, coloqué un punto en el mapa' }));
+        error = true;
       } else { this.setState(() => ({ hostError: '' })); } 
     }
     // Checking for facilitator errors
@@ -228,7 +232,8 @@ export default class HostFacilitatorForm extends React.Component {
             },
             houseSchedule: this.state.houseSchedule,
             houseCapacity: parseInt(this.state.houseCapacity),
-            layaways: parseInt(this.state.layaways)
+            layaways: parseInt(this.state.layaways),
+            numberLabel: this.state.numberLabel
           }
         });
       }

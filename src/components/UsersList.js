@@ -19,7 +19,7 @@ export const UsersList = (props) => (
       ) : (
         props.users.map((user, index) => 
           <UsersListItem 
-            key={user.uid}
+            key={user.id}
             count={index + 1}
             {...user}
           />

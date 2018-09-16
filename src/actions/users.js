@@ -5,6 +5,20 @@ export const addUser = (user) => ({
   user
 });
 
+export const editUser = (id, updates) => ({
+  type: 'EDIT_USER',
+  id,
+  updates
+});
+
+export const startEditUser = (id, updates) => {
+  return (dispatch) => {
+    return database.ref(`users/${id}`).update(updates).then(() => {
+      dispatch(editUser(id, updates));
+    });
+  };
+};
+
 export const setUsers = (users) => ({
   type: 'SET_USERS',
   users

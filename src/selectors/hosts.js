@@ -1,8 +1,7 @@
 
 // Get only hosts partakers
 export default (partakers) => {
-  return partakers.filter((partaker) => {
-    const isHost = partaker.hostInfo !== undefined ? true : false;
-    return isHost;
+  return partakers.filter((partaker) => {     
+    return partaker.hostInfo !== undefined ? true : false;
   });
 }

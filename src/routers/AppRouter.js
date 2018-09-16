@@ -18,6 +18,7 @@ import ChangePasswordPage from '../components/ChangePasswordPage';
 
 import UsersDashboardPage from '../components/UsersDashboardPage';
 import AddUserPage from '../components/AddUserPage';
+import EditUserPage from '../components/EditUserPage';
 
 import FinancesDashboardPage from '../components/FinancesDashboardPage';
 import AddFolioPage from '../components/AddFolioPage';
@@ -41,6 +42,7 @@ const AppRouter = () => (
 
         <AdminRoute path={routes.USERS} component={UsersDashboardPage} exact={true}/>
         <AdminRoute path={routes.CREATE_USER} component={AddUserPage} exact={true}/>
+        <AdminRoute path={routes.EDIT_USER} component={EditUserPage} exact={true}/>
         
         <FinancesRoute path={routes.FINANCES} component={FinancesDashboardPage} exact={true} />
         <FinancesRoute path={routes.CREATE_FOLIO} component={AddFolioPage} exact={true} />

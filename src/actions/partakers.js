@@ -141,24 +141,38 @@ export const editPartaker = (id, updates) => ({
   updates
 });
 
-export const startEditPartaker = (id, updates) => {
+export const startEditPartaker = (id, updates, userName) => {
   return (dispatch) => {
-    /*
+    const now = moment().valueOf();
+    updates.lastEditedAt = now;
+    updates.lastEditedBy = userName;
+
+    if (!updates.registeredAt) {
+      updates.registeredAt = now;
+      updates.registeredBy = userName;
+    }
+    
     if (updates.hostInfo && !updates.hostInfo.numberLabel) {
       return database.ref('numberLabel').transaction((numberLabel) => {
         return numberLabel + 1;
       }).then((numberLabel) => {
-        console.log('outside label: ', numberLabel)
-        updates.hostInfo.numberLabel = numberLabel;
-        console.log('updates: ', updates);
+        updates.hostInfo.numberLabel = numberLabel.snapshot.val();
         return database.ref(`partakers/${id}`).set(updates).then(() => {
           dispatch(editPartaker(id, updates));
+          dispatch(addLastPartaker({
+            id,
+            ...updates
+          }));
         });
       });
-    }*/
+    }
 
     return database.ref(`partakers/${id}`).set(updates).then(() => {
       dispatch(editPartaker(id, updates));
+      dispatch(addLastPartaker({
+        id,
+        ...updates
+      }));
     });
   };
 };

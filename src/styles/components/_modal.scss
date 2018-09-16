@@ -19,8 +19,9 @@
 
 .modal {
   background: $light-gray;
-  /*color: white;*/
-  max-width: 30rem;
+  border: 2px solid $sand;
+  border-radius: 10px 10px;
+  max-width: 45rem;
   outline: none;
   padding: $l-size;
   text-align: center;
@@ -35,4 +36,10 @@
   font-weight: 300;
   margin: 0 0 $l-size 0;
   word-break: break-all;
+}
+
+.modal__buttons {
+  button {
+    margin: 0 $xs-size;
+  }
 }

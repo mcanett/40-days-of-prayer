@@ -19,7 +19,7 @@ const FolioModal = (props) => (
       <div>
         <h3 className="modal__title">Folio Exitosamente Creado</h3>
         {<h2 className="modal__body">{props.lastPartaker.folio}</h2>}
-        <button className="button" onClick={props.handleClearCreatedFolio}>Okay</button>
+        <button className="button button__positive" onClick={props.handleClearCreatedFolio}>OK</button>
       </div>
       :
       <SyncLoader className="loader" color={loaderColor}/>

@@ -3,8 +3,8 @@ import moment from 'moment';
 
 const FinancesListItem = ({ count, id, folio, name, createdAt}) => {
   const fullName = `${name.firstName} ${name.lastName} ${name.mothersSurname}`;
-  const prefix = folio.substr(0,1);
-  const typeTag = prefix === 'P' ? 'Pagado' : prefix === 'D' ? 'Donado' : 'Autorizado';
+  /*const prefix = folio.substr(0,1);
+  const typeTag = prefix === 'P' ? 'Pagado' : prefix === 'D' ? 'Donado' : 'Autorizado';*/
   const formattedDate = moment(createdAt).format('DD/MM/YY');
   return (
     <div className="list-item">
@@ -15,7 +15,7 @@ const FinancesListItem = ({ count, id, folio, name, createdAt}) => {
       </div>
       <div className="list-item__type">
         <h3>
-          {typeTag}
+          {folio}
         </h3>
       </div>
       <div className="list-item__creation-date">

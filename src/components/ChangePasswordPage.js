@@ -58,27 +58,37 @@ class PasswordChangeForm extends React.Component {
 
     return (
       <div className="component">
-        { error && <p style={{color: 'red'}}>{error.message}</p> }
-        <form onSubmit={this.onSubmit}>
-          <input
-            id="passwordOne"
-            value={passwordOne}
-            onChange={this.handleChange}
-            type="password"
-            placeholder="Nueva Contraseña"
-          />
-          <input
-            id="passwordTwo"
-            value={passwordTwo}
-            onChange={this.handleChange}
-            type="password"
-            placeholder="Confirma Nueva Contraseña"
-          />
-          <button disabled={isInvalid} type="submit">
-            Cambiar contraseña
-          </button>
-
-        </form>
+        <div className="component__container">
+          <h1 className="component__title">Cambio de contraseña</h1>
+          { error && <p style={{color: 'red'}}>{error.message}</p> }
+          <form onSubmit={this.onSubmit}>
+            <div className="input-group">
+              <input
+                id="passwordOne"
+                className="text-input"
+                value={passwordOne}
+                onChange={this.handleChange}
+                type="password"
+                placeholder="Nueva Contraseña"
+              />
+            </div>
+            <div className="input-group">
+              <input
+                id="passwordTwo"
+                className="text-input"
+                value={passwordTwo}
+                onChange={this.handleChange}
+                type="password"
+                placeholder="Confirma Nueva Contraseña"
+              />
+            </div>
+            <div className="input-group">
+              <button className="button button__positive" disabled={isInvalid} type="submit">
+                Cambiar contraseña
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     );
   };

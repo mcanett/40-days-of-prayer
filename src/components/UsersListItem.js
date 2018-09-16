@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const UsersListItem = ({ count, email, uid, userName, userType }) => {
+const UsersListItem = ({ count, id, email, uid, userName, userType }) => {
   const type = userType === 'finances' ? 'Finanzas' : userType === 'registry' ? 'Registro' :
     userType === 'supervisor' ? 'Supervisor' : 'Administrador';
   return (
-    <div className="list-item">
+    <Link to={`/user/${id}`} className="list-item">
       <div className="list-item__name">
         <h3>
           {count}. {userName}
@@ -20,7 +21,7 @@ const UsersListItem = ({ count, email, uid, userName, userType }) => {
           {type}
         </h3>
       </div>
-    </div>
+    </Link>
   );
 };
 

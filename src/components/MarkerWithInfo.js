@@ -21,8 +21,8 @@ export default class MarkerWithInfo extends React.Component {
       <Marker key={this.props.host.id}
               position={{ lat: host.hostInfo.location.lat, lng: host.hostInfo.location.lng }}
               onClick={() => this.onMarkerClick(host.id)}
+              label={host.hostInfo.numberLabel.toString()}
               >
-        {/*label={'888'}*/}
         {this.state.isOpen &&
             <InfoWindow position={{ lat: host.hostInfo.location.lat, lng: host.hostInfo.location.lng }}
                         onCloseClick={() => this.onMarkerClick()}>

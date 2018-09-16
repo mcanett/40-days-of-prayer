@@ -7,8 +7,9 @@ import * as routes from '../constants/routes';
 
 export class EditPartakerPage extends React.Component {
   onSubmit = (partaker) => {
-    this.props.startEditPartaker(this.props.partaker.id, partaker);
-    this.props.history.push(routes.REGISTRY);
+    this.props.startEditPartaker(this.props.partaker.id, partaker, this.props.userName).then(() => {
+      this.props.history.push(routes.REGISTRY);
+    });
   };
   onRemove = () => {
     this.props.startRemovePartaker(this.props.partaker.id);
@@ -34,11 +35,12 @@ export class EditPartakerPage extends React.Component {
 
 const mapStateToProps = (state, props) => ({
   partaker: state.partakers.find((partaker) => partaker.id === props.match.params.id),
-  hosts: selectHosts(state.partakers)
+  hosts: selectHosts(state.partakers),
+  userName: state.auth.userName
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  startEditPartaker: (id, partaker) => dispatch(startEditPartaker(id, partaker)),
+  startEditPartaker: (id, partaker, userName) => dispatch(startEditPartaker(id, partaker, userName)),
   startRemovePartaker: (id) => dispatch(startRemovePartaker({ id }))
 });
 
