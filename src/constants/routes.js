@@ -12,6 +12,8 @@ export const EDIT_USER = "/user/:id"; // <Route path="/edit/:id";
 export const FINANCES = "/finances";
 export const CREATE_FOLIO = "/create/folio";
 
+export const HOSTS_FACILITATORS = "/hostsFacilitators";
+
 export const REGISTRY = "/registry";
 export const REGISTRY_DASHBOARD = "/registry/dashboard";
 export const EDIT_PARTAKER = "/edit/:id"; // <Route path="/edit/:id";

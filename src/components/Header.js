@@ -28,6 +28,10 @@ export const Header = ({ userName, userType }) => (
         <NavLink className="header__navigation-item" to={routes.REGISTRY} activeClassName="is-active" exact={true}>Registro</NavLink>
         : false
       )}
+      {(userType === 'admin' || userType === 'supervisor' ? 
+        <NavLink className="header__navigation-item" to={routes.HOSTS_FACILITATORS} activeClassName="is-active" exact={true}>A&F</NavLink>
+        : false
+      )}
       {(userType === 'admin' ? 
         <NavLink className="header__navigation-item" to={routes.USERS} activeClassName="is-active" exact={true}>Usuarios</NavLink>
         : false

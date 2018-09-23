@@ -8,17 +8,17 @@ const FinancesListItem = ({ count, id, folio, name, createdAt}) => {
   const formattedDate = moment(createdAt).format('DD/MM/YY');
   return (
     <div className="list-item">
-      <div className="list-item__name">
+      <div className="list-item__xl">
         <h3>
           {count}. {fullName}
         </h3>
       </div>
-      <div className="list-item__type">
+      <div className="list-item__m">
         <h3>
           {folio}
         </h3>
       </div>
-      <div className="list-item__creation-date">
+      <div className="list-item__xs">
         <h3>
           {formattedDate}
         </h3>

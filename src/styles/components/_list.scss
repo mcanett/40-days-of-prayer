@@ -41,20 +41,32 @@
   flex-direction: column;
 }
 
-.list-item__name {
+.list-item__xl {
   @media (min-width: $desktop-breakpoint) {
     min-width: $desktop-breakpoint;
     width: 50rem;
   }
 }
 
-.list-item__type {
+.list-item__l {
+  @media (min-width: $desktop-breakpoint) {
+    width: 40rem;
+  }
+}
+
+.list-item__m {
   @media (min-width: $desktop-breakpoint) {
     width: 30rem;
   }
 }
 
-.list-item__creation-date {
+.list-item__s {
+  @media (min-width: $desktop-breakpoint) {
+    width: 20rem;
+  }
+}
+
+.list-item__xs {
   @media (min-width: $desktop-breakpoint) {
     width: 10rem;
   }

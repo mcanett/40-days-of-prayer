@@ -7,6 +7,7 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import AdminRoute from './AdminRoute';
 import FinancesRoute from './FinancesRoute';
+import SupervisorRoute from './SupervisorRoute';
 import RegistryRoute from './RegistryRoute';
 
 import PublicWelcomePage from '../components/PublicWelcomePage';
@@ -22,6 +23,8 @@ import EditUserPage from '../components/EditUserPage';
 
 import FinancesDashboardPage from '../components/FinancesDashboardPage';
 import AddFolioPage from '../components/AddFolioPage';
+
+import HostFacilitatorDashboardPage from '../components/HostFacilitatorDashboardPage';
 
 import PartakerDashboardPage from '../components/PartakerDashboardPage';
 import SearchPartakerPage from '../components/SearchPartakerPage';
@@ -46,6 +49,9 @@ const AppRouter = () => (
         
         <FinancesRoute path={routes.FINANCES} component={FinancesDashboardPage} exact={true} />
         <FinancesRoute path={routes.CREATE_FOLIO} component={AddFolioPage} exact={true} />
+
+        
+        <SupervisorRoute path={routes.HOSTS_FACILITATORS} component={HostFacilitatorDashboardPage} exact={true}/>
 
         <RegistryRoute path={routes.REGISTRY} component={SearchPartakerPage} exact={true}/>
         <RegistryRoute path={routes.REGISTRY_DASHBOARD} component={PartakerDashboardPage} exact={true}/>

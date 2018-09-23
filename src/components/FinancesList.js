@@ -7,9 +7,9 @@ export const FinancesList = (props) => (
   <div>
     <div className="list-header">
       <div className="show-for-mobile">Participantes</div>
-      <div className="show-for-desktop list-item__name">Participante</div>
-      <div className="show-for-desktop list-item__type">Folio</div>
-      <div className="show-for-desktop list-item__creation-date">Fecha</div>
+      <div className="show-for-desktop list-item__xl">Participante</div>
+      <div className="show-for-desktop list-item__m">Folio</div>
+      <div className="show-for-desktop list-item__xs">Fecha</div>
     </div>
     {
       props.partakers.length === 0 ? (

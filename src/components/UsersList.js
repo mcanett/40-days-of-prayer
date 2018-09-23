@@ -7,9 +7,9 @@ export const UsersList = (props) => (
   <div>
     <div className="list-header">
       <div className="show-for-mobile">Usuarios</div>
-      <div className="show-for-desktop list-item__name">Usuario</div>
-      <div className="show-for-desktop list-item__type">Correo</div>
-      <div className="show-for-desktop list-item__creation-date">Tipo</div>
+      <div className="show-for-desktop list-item__l">Usuario</div>
+      <div className="show-for-desktop list-item__l">Correo</div>
+      <div className="show-for-desktop list-item__s">Tipo</div>
     </div>
     {
       props.users.length === 0 ? (
