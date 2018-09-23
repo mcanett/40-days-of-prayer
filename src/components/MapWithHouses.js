@@ -30,11 +30,11 @@ import MarkerWithInfo from './MarkerWithInfo';
         defaultCenter={{ lat: 32.6137537, lng: -115.4853104 }}
         options={{streetViewControl: false, mapTypeControl: false}}
       >
-        <MarkerClusterer
+        {/*<MarkerClusterer
           averageCenter
           enableRetinaIcons
           gridSize={60}
-        >
+        >*/}
           {props.hosts.map(host => {
             const isOpen = props.houseId === host.id;
             return (<MarkerWithInfo 
@@ -46,7 +46,7 @@ import MarkerWithInfo from './MarkerWithInfo';
             );
           })
         }
-        </MarkerClusterer>
+        {/*</MarkerClusterer>*/}
       </GoogleMap>
     );
   });
