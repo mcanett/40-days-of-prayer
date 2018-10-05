@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import HostFacilitatorList from './HostFacilitatorList';
-import FinancesListFilters from './FinancesListFilters';
+import HostFacilitatorListFilters from './HostFacilitatorListFilters';
 import HostFacilitatorSummary from './HostFacilitatorSummary';
 import { removeLastPartaker } from '../actions/partakers';
 
@@ -22,7 +22,7 @@ export class HostsDashboardPage extends React.Component {
       <div className="component">
         <div className="component__container">
           <HostFacilitatorSummary />
-          {/*<FinancesListFilters />*/}
+          <HostFacilitatorListFilters />
           <HostFacilitatorList />
         </div>
       </div>

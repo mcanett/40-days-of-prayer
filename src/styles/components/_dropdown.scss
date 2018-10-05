@@ -6,6 +6,7 @@
 .dropdown__content {
   display: none;
   background-color: $light-gray;
+  border-radius: 0 0 10px 10px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   min-width: 180px;
   padding: 12px 16px;

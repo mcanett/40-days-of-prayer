@@ -12,7 +12,7 @@ const SearchPartakerModal = (props) => {
     props.lastPartaker.hostInfo && props.lastPartaker.facilitatorInfo ? 'anfitrión y facilitador' :
     props.lastPartaker.hostInfo ? 'anfitrión' :
     props.lastPartaker.facilitatorInfo ? 'facilitador' :
-    undefined : undefined;
+    'participante general' : undefined;
   return (
     <Modal
       isOpen={props.openModal}
@@ -35,7 +35,8 @@ const SearchPartakerModal = (props) => {
           <h3 className="modal__title">¿Es usted?</h3>
           <h2 className="modal__body">{partakerFullName}</h2>
           <div className="modal__buttons">
-            <button className="button button__positive" onClick={props.onEdit}>Editar</button>
+            <button className="button button__gold" onClick={props.onEditHostFacilitator}>Anfritrión/Facilitador</button>
+            <button className="button button__positive" onClick={props.onEditPartaker}>General</button>
             <button className="button" onClick={props.handleClearSavedSuccessfully}>Cancelar</button>
           </div>
         </div>

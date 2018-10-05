@@ -2,14 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import HostFacilitatorListItem from './HostFacilitatorListItem';
 import selectHostsFacilitators from '../selectors/hosts-facilitators';
+import selectFilters from '../selectors/host-facilitators-filters';
 
 export const HostFacilitatorList = (props) => (
   <div>
     <div className="list-header">
       <div className="show-for-mobile">Anfitriones</div>
-      <div className="show-for-desktop list-item__l">Anfitrión</div>
-      <div className="show-for-desktop list-item__s">Folio</div>
-      <div className="show-for-desktop list-item__s">Rol</div>
+      <div className="show-for-desktop list-item__l">Nombre</div>
+      <div className="show-for-desktop list-item__xs">Folio</div>
+      <div className="show-for-desktop list-item__s">Teléfono</div>
+      <div className="show-for-desktop list-item__xxs">Casa</div>
+      <div className="show-for-desktop list-item__xxs">Fac.</div>
       <div className="show-for-desktop list-item__xs">Fecha</div>
     </div>
     {
@@ -23,6 +26,7 @@ export const HostFacilitatorList = (props) => (
             key={hostFacilitator.id}
             count={index + 1}
             {...hostFacilitator}
+            hasFacilitator={!!props.housesFacilitators.find((houseFacilitator) => houseFacilitator.house === hostFacilitator.id)}
           />
         )
       )
@@ -32,7 +36,8 @@ export const HostFacilitatorList = (props) => (
 
 const mapStateToProps = (state) => {
   return {
-    hostsFacilitators: selectHostsFacilitators(state.partakers)
+    housesFacilitators: state.housesFacilitators,
+    hostsFacilitators: selectFilters(selectHostsFacilitators(state.partakers), state.hostFacilitatorFilters)
   };
 };
 

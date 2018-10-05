@@ -21,8 +21,22 @@ export class SearchPartakerPage extends React.Component {
     }));
   }
   
-  onEdit = () => {
-    this.props.history.push('/edit/' + this.state.partakerInfo.partaker.id);
+  onEditHostFacilitator = () => {
+    // this.props.history.push('/edit/' + this.state.partakerInfo.partaker.id);
+    this.props.history.push({
+      pathname: '/edit/' + this.state.partakerInfo.partaker.id,
+      search: '',
+      state: { detail: 'hf' }
+    });
+  };
+  
+  onEditPartaker = () => {
+    // this.props.history.push('/edit/' + this.state.partakerInfo.partaker.id);
+    this.props.history.push({
+      pathname: '/edit/' + this.state.partakerInfo.partaker.id,
+      search: '',
+      state: { detail: 'p' }
+    });
   };
 
   onSearch = (partakerText) => {
@@ -47,7 +61,8 @@ export class SearchPartakerPage extends React.Component {
             partakerInfo={this.state.partakerInfo}
             lastPartaker={this.state.lastPartaker}
             handleClearSavedSuccessfully={this.handleClearSavedSuccessfully}
-            onEdit={this.onEdit}
+            onEditHostFacilitator={this.onEditHostFacilitator}
+            onEditPartaker={this.onEditPartaker}
 					/>
         </div>
       </div>

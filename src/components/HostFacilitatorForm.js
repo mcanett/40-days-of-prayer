@@ -11,7 +11,11 @@ export default class HostFacilitatorForm extends React.Component {
       lastName: props.partaker ? props.partaker.name.lastName : '',
       mothersSurname: props.partaker ? props.partaker.name.mothersSurname : '',
       firstName: props.partaker ? props.partaker.name.firstName : '',
+
       createdAt: props.partaker ? props.partaker.createdAt : 0,
+      registeredAt: props.partaker ? props.partaker.registeredAt : undefined,
+      registeredBy: props.partaker ? props.partaker.registeredBy : undefined,
+
       phone: props.partaker ? props.partaker.phone ? props.partaker.phone : '' : '', 
       age: props.partaker ? props.partaker.age ? props.partaker.age : '' : '',
       gender: props.partaker ? props.partaker.gender ? props.partaker.gender : 'H' : 'H',
@@ -216,6 +220,8 @@ export default class HostFacilitatorForm extends React.Component {
         isChristian: this.state.isChristian,
         congregateTime: this.state.isChristian ? this.state.congregateTime : '',
         congregationName: this.state.isChristian ? this.state.congregationName : '',
+        registeredAt: this.state.registeredAt,
+        registeredBy: this.state.registeredBy
       }
       if (this.state.isHost) {
         Object.assign(partaker, {

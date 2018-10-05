@@ -26,6 +26,7 @@ const createUser = (email, password) => {
 
 export { firebase, authProvider, createUser, database as default };
 
+
 // const folio = 'P-62519';
 // const secondFolio = 'P-62518';
 // const partaker = {

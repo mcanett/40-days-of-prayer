@@ -71,3 +71,10 @@
     width: 10rem;
   }
 }
+
+.list-item__xxs {
+  @media (min-width: $desktop-breakpoint) {
+    width: 6rem;
+  }
+  text-align: center;
+}

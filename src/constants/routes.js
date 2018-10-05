@@ -1,6 +1,7 @@
 export const PUBLIC_WELCOME = "/";
 export const LOGIN = "/login";
-export const HELP = "/help";
+export const PUBLIC_SEARCH = "/publicSearch";
+export const PUBLIC_REGISTER = "/publicRegister";
 
 export const PRIVATE_WELCOME = "/privateWelcome";
 export const CHANGE_PASSWORD = "/changePassword";

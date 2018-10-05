@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
+import { UserIcon } from './Icons';
 import { startLogOut } from '../actions/auth';
 import * as routes from '../constants/routes';
 
@@ -10,7 +11,8 @@ export const Header = ({ userName, userType }) => (
       <img src="/images/logo-96-gold.png" className="header__title-box-logo"/>
       <div className="header__title-user-name">
         <div className="dropdown">
-          <span className="button--link">{userName}</span>
+          <UserIcon />
+          <span className="button--link--gold">{userName}</span>
           <div className="dropdown__content">
             <Link to={routes.CHANGE_PASSWORD}>Cambiar contraseña</Link>
             <button className="button--link" onClick={startLogOut}>Cerrar Sesión</button>

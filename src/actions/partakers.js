@@ -189,16 +189,34 @@ export const startSetPartakers = () => {
   return (dispatch) => {
     return database.ref('partakers').once('value').then((snapshot) => {
       const partakers = [];
+      const housesFacilitators = [];
       snapshot.forEach((childSnapshot) => {
         partakers.push({
           id: childSnapshot.key,
           ...childSnapshot.val()        
         });
+
+        // Getting houses with facilitators
+        if (childSnapshot.val().facilitatorInfo !== undefined) {
+          if (childSnapshot.val().houseId !== undefined) {
+            housesFacilitators.push({
+              facilitator: childSnapshot.key,
+              house: childSnapshot.val().houseId
+            });
+          }
+        }
+
       });
       dispatch(setPartakers(partakers));
+      dispatch(setHousesFacilitators(housesFacilitators));
     });
   };
 };
+
+export const setHousesFacilitators = (housesFacilitators) => ({
+  type: 'SET_HOUSES_FACILITATORS',
+  housesFacilitators
+});
 
 // GET_PARTAKER
 /*export const addSearchedPartaker = (partaker) => ({
@@ -217,3 +235,18 @@ export const startAddSearchedPartaker = (id) => {
     });
   };
 }*/
+
+// // child_added
+// database.ref('partaker').on('child_added', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
+//   addFolio({
+//     id: snapshot.key,
+//     partaker: snapshot.val()
+//   });
+// });
+
+// // child_changed
+// database.ref('partaker').on('child_changed', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
+//   editPartaker(snapshot.key, snapshot.val());
+// });

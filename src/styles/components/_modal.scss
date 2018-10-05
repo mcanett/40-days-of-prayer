@@ -39,7 +39,8 @@
 }
 
 .modal__buttons {
+  display: grid;
   button {
-    margin: 0 $xs-size;
+    margin: $xs-size 0;
   }
 }

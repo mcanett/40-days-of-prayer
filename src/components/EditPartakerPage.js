@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import HostFacilitatorForm from './HostFacilitatorForm';
+import PartakerBasicForm from './PartakerBasicForm';
 import { startEditPartaker, startRemovePartaker } from '../actions/partakers';
 import selectHosts from '../selectors/hosts';
 import * as routes from '../constants/routes';
@@ -19,11 +20,19 @@ export class EditPartakerPage extends React.Component {
   render() {
     return (
       <div className="component">
+      { this.props.location.state.detail === 'hf' ?
         <HostFacilitatorForm
           hosts={this.props.hosts}
           partaker={this.props.partaker}
           onSubmit={this.onSubmit}
         />
+        :
+        <PartakerBasicForm 
+          hosts={this.props.hosts}
+          partaker={this.props.partaker}
+          onSubmit={this.onSubmit}
+        />
+      }
         {/*<button
           className="button button__danger"
           onClick={this.onRemove}

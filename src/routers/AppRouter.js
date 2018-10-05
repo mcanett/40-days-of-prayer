@@ -37,8 +37,9 @@ const AppRouter = () => (
   <Router history={history}>
     <div>
       <Switch>
-      <PublicRoute path={routes.PUBLIC_WELCOME} component={PublicWelcomePage} exact={true} />
-      <PublicRoute path={routes.LOGIN} component={LoginPage} exact={true} />
+        <PublicRoute path={routes.PUBLIC_WELCOME} component={PublicWelcomePage} exact={true} />
+        <PublicRoute path={routes.LOGIN} component={LoginPage} exact={true} />
+        <PublicRoute path={routes.PUBLIC_SEARCH} component={SearchPartakerPage} exact={true} />
         
         <PrivateRoute path={routes.PRIVATE_WELCOME} component={PrivateWelcomePage} exact={true} />
         <PrivateRoute path={routes.CHANGE_PASSWORD} component={ChangePasswordPage} exact={true} />

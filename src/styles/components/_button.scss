@@ -16,11 +16,20 @@
   background: $danger;
 }
 
+.button__gold {
+  background: $sand;
+}
+
 .button--link {
   background: none;
   border: none;
   color: blue;
   text-decoration: underline;
+}
+
+.button--link--gold {
+  @extend .button--link;
+  color: $sand;
 }
 
 .button--link:active {
