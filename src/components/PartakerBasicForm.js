@@ -20,7 +20,7 @@ export default class PartakerForm extends React.Component {
       gender: props.partaker ? props.partaker.gender ? props.partaker.gender : 'H' : 'H',
       isChristian: props.partaker ? props.partaker.isChristian ? props.partaker.isChristian : false : false,
       congregateTime: props.partaker ? props.partaker.congregateTime ? props.partaker.congregateTime : '' : '',
-      congregartionName: props.partaker ? props.partaker.congregartionName ? props.partaker.congregartionName : '' : '',
+      congregationName: props.partaker ? props.partaker.congregationName ? props.partaker.congregationName : '' : '',
       houseId: props.partaker ? props.partaker.houseId ? props.partaker.houseId : '' : '',
       error: ''
     };
@@ -58,7 +58,6 @@ export default class PartakerForm extends React.Component {
     e.preventDefault();
     let error = false;
     // Checking for basic errors
-    console.log(this.state);
     if (!this.state.lastName || !this.state.mothersSurname || !this.state.firstName
       || !this.state.phone || !this.state.age || !this.state.gender) {
         this.setState(() => ({ error: 'Por favor, llene todos los datos básicos' }));
@@ -198,7 +197,7 @@ export default class PartakerForm extends React.Component {
               { this.state.isChristian &&
                 <div className="input-group__item">
                   <input
-                    id="congragationName"
+                    id="congregationName"
                     type="text"
                     placeholder="Congregación"
                     className="text-input"
