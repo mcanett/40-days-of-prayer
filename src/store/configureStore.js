@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import partakersReducer from '../reducers/partakers';
 import housesFacilitatorsReducer from '../reducers/housesFacilitators';
+import housesEntriesReducer from '../reducers/housesEntries';
 import lastPartakerReducer from '../reducers/lastPartaker';
 import financesFiltersReducer from '../reducers/financesFilters';
 import authReducer from '../reducers/auth';
@@ -18,6 +19,7 @@ export default () => {
       lastPartaker: lastPartakerReducer,
       partakers: partakersReducer,
       housesFacilitators: housesFacilitatorsReducer,
+      housesEntries: housesEntriesReducer,
       financesFilters: financesFiltersReducer,
       auth: authReducer,
       users: usersReducer,

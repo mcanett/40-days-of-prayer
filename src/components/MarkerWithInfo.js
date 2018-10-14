@@ -1,7 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Marker, InfoWindow } from 'react-google-maps';
 
-export default class MarkerWithInfo extends React.Component {
+export class MarkerWithInfo extends React.Component {
   constructor(props) {
     super(props);
 
@@ -16,14 +17,15 @@ export default class MarkerWithInfo extends React.Component {
   }
 
   render() {
-    const { host } = this.props;
+    const { host, houseRemainingCapacity } = this.props;
     return (
-      <Marker key={this.props.host.id}
+      <Marker key={host.id}
               position={{ lat: host.hostInfo.location.lat, lng: host.hostInfo.location.lng }}
               onClick={() => this.onMarkerClick(host.id)}
               label={host.hostInfo.numberLabel.toString()}
               >
-        {this.state.isOpen &&
+              {/*icon="http://maps.google.com/mapfiles/ms/icons/blue.png"*/}
+              {this.state.isOpen &&
             <InfoWindow position={{ lat: host.hostInfo.location.lat, lng: host.hostInfo.location.lng }}
                         onCloseClick={() => this.onMarkerClick()}>
               <div className="info-window">
@@ -33,6 +35,14 @@ export default class MarkerWithInfo extends React.Component {
                 <h3>
                   {host.hostInfo.address.streetName} {host.hostInfo.address.houseNumber} {host.hostInfo.address.neighborhood}, {host.hostInfo.address.zipCode}
                 </h3>
+                <h4>Horario:</h4>
+                <h3>
+                  {host.hostInfo.houseSchedule}
+                </h3>
+                <h4>Cupo:</h4>
+                <h3>
+                  {houseRemainingCapacity}
+                </h3>
               </div>
             </InfoWindow>
         }
@@ -40,3 +50,9 @@ export default class MarkerWithInfo extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state, props) => ({
+  houseRemainingCapacity: (props.host.hostInfo.houseCapacity - state.partakers.filter(partaker => partaker.houseId === props.host.id).length) - 1
+});
+
+export default connect(mapStateToProps, undefined)(MarkerWithInfo);

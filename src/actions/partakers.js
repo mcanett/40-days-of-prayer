@@ -205,6 +205,8 @@ export const startSetPartakers = () => {
             });
           }
         }
+        
+
 
       });
       dispatch(setPartakers(partakers));
