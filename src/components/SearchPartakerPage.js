@@ -41,9 +41,9 @@ export class SearchPartakerPage extends React.Component {
 
   onSearch = (partakerText) => {
     const partakerInfo = searchPartaker(this.props.partakers, partakerText, this.props.userType)
-    if (partakerInfo !== undefined && partakerInfo.state === 'name') {
+    /*if (partakerInfo !== undefined && partakerInfo.state === 'name') {
       this.props.history.push('/edit/' + partakerInfo.partaker.id);
-    } 
+    } */
     this.setState(() => ({
       partakerInfo,
       openModal: true

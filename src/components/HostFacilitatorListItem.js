@@ -38,6 +38,11 @@ return (
     </div>
     <div className="list-item__xxs">
       <h3>
+        { hostFacilitator.houseNumberLabel }
+      </h3>
+    </div>
+    <div className="list-item__xxs">
+      <h3>
       { role !== 'Anfitrión' ? <BlueManIcon /> : hostFacilitator.hasFacilitator ? <GreenManIcon /> : ` - `}
       </h3>
     </div>

@@ -12,6 +12,7 @@ export const HostFacilitatorList = (props) => (
       <div className="show-for-desktop list-item__xs">Folio</div>
       <div className="show-for-desktop list-item__s">Teléfono</div>
       <div className="show-for-desktop list-item__xxs">Casa</div>
+      <div className="show-for-desktop list-item__xxs">#</div>
       <div className="show-for-desktop list-item__xxs">Fac.</div>
       <div className="show-for-desktop list-item__xs">Fecha</div>
     </div>
@@ -27,6 +28,9 @@ export const HostFacilitatorList = (props) => (
             count={index + 1}
             {...hostFacilitator}
             hasFacilitator={!!props.housesFacilitators.find((houseFacilitator) => houseFacilitator.house === hostFacilitator.id)}
+            houseNumberLabel={hostFacilitator.hostInfo ? hostFacilitator.hostInfo.numberLabel 
+              : hostFacilitator.houseId ? props.hostsFacilitators.find(host => host.id == hostFacilitator.houseId).hostInfo.numberLabel 
+              : ' - '}
           />
         )
       )

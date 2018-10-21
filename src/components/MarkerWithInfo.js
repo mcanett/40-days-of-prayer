@@ -18,13 +18,43 @@ export class MarkerWithInfo extends React.Component {
 
   render() {
     const { host, houseRemainingCapacity } = this.props;
+    
+    const greenIconUrl = "http://maps.google.com/mapfiles/kml/paddle/grn-blank.png";
+    const blueIconUrl = "http://maps.google.com/mapfiles/kml/paddle/blu-blank.png";
+    const pinkIconUrl = "http://maps.google.com/mapfiles/kml/paddle/pink-blank.png";
+    const redIconUrl = "http://maps.google.com/mapfiles/kml/paddle/red-blank.png";
+    let iconUrl = '';
+    let title = '';
+
+    if( houseRemainingCapacity <= 0) {
+      iconUrl = redIconUrl;
+      title = 'Casa llena';
+    } else if (houseRemainingCapacity <= (host.hostInfo.houseCapacity/2)) {
+      iconUrl = pinkIconUrl;
+      title = 'Casa casi llena';
+    }else if (houseRemainingCapacity === host.hostInfo.houseCapacity) {
+      iconUrl = greenIconUrl;
+      title = 'Todo el cupo';
+    } else {
+      iconUrl = blueIconUrl;
+      title = 'Suficiente cupo';
+    }
+
     return (
       <Marker key={host.id}
               position={{ lat: host.hostInfo.location.lat, lng: host.hostInfo.location.lng }}
-              onClick={() => this.onMarkerClick(host.id)}
-              label={host.hostInfo.numberLabel.toString()}
+              onClick={houseRemainingCapacity <= 0 ? () => (false) : () => this.onMarkerClick(host.id)}
+              label={{
+                "text": host.hostInfo.numberLabel.toString(),
+                "fontSize": "14px"
+              }}
+              title={title}
+              icon={{
+                "url": iconUrl,
+                "labelOrigin": new google.maps.Point(32, 19)
+              }}
+              labelClass="marker-label"
               >
-              {/*icon="http://maps.google.com/mapfiles/ms/icons/blue.png"*/}
               {this.state.isOpen &&
             <InfoWindow position={{ lat: host.hostInfo.location.lat, lng: host.hostInfo.location.lng }}
                         onCloseClick={() => this.onMarkerClick()}>
