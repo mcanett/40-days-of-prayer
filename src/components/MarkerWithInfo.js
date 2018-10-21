@@ -19,9 +19,9 @@ export class MarkerWithInfo extends React.Component {
   render() {
     const { host, houseRemainingCapacity } = this.props;
     
+    const whtIconUrl = "http://maps.google.com/mapfiles/kml/paddle/wht-blank.png";
     const greenIconUrl = "http://maps.google.com/mapfiles/kml/paddle/grn-blank.png";
     const blueIconUrl = "http://maps.google.com/mapfiles/kml/paddle/blu-blank.png";
-    const pinkIconUrl = "http://maps.google.com/mapfiles/kml/paddle/pink-blank.png";
     const redIconUrl = "http://maps.google.com/mapfiles/kml/paddle/red-blank.png";
     let iconUrl = '';
     let title = '';
@@ -30,13 +30,13 @@ export class MarkerWithInfo extends React.Component {
       iconUrl = redIconUrl;
       title = 'Casa llena';
     } else if (houseRemainingCapacity <= (host.hostInfo.houseCapacity/2)) {
-      iconUrl = pinkIconUrl;
+      iconUrl = blueIconUrl;
       title = 'Casa casi llena';
     }else if (houseRemainingCapacity === host.hostInfo.houseCapacity) {
-      iconUrl = greenIconUrl;
+      iconUrl = whtIconUrl;
       title = 'Todo el cupo';
     } else {
-      iconUrl = blueIconUrl;
+      iconUrl = greenIconUrl;
       title = 'Suficiente cupo';
     }
 

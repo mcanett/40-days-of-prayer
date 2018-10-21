@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import HostFacilitatorListItem from './HostFacilitatorListItem';
+import selectHosts from '../selectors/hosts';
 import selectHostsFacilitators from '../selectors/hosts-facilitators';
 import selectFilters from '../selectors/host-facilitators-filters';
 
@@ -29,7 +30,7 @@ export const HostFacilitatorList = (props) => (
             {...hostFacilitator}
             hasFacilitator={!!props.housesFacilitators.find((houseFacilitator) => houseFacilitator.house === hostFacilitator.id)}
             houseNumberLabel={hostFacilitator.hostInfo ? hostFacilitator.hostInfo.numberLabel 
-              : hostFacilitator.houseId ? props.hostsFacilitators.find(host => host.id == hostFacilitator.houseId).hostInfo.numberLabel 
+              : hostFacilitator.houseId ? props.hosts.find(host => host.id == hostFacilitator.houseId).hostInfo.numberLabel 
               : ' - '}
           />
         )
@@ -41,6 +42,7 @@ export const HostFacilitatorList = (props) => (
 const mapStateToProps = (state) => {
   return {
     housesFacilitators: state.housesFacilitators,
+    hosts: selectHosts(state.partakers),
     hostsFacilitators: selectFilters(selectHostsFacilitators(state.partakers), state.hostFacilitatorFilters)
   };
 };
