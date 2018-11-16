@@ -16,7 +16,7 @@ return (
     state: { detail: 'hf' }
   }} className="list-item">
   {/*<Link to={`/edit/${hostFacilitator.id}`} className="list-item">*/}
-  <div className="list-item__l">
+    <div className="list-item__l">
       <h3>
         {hostFacilitator.count}. {fullName}
       </h3>
@@ -28,7 +28,7 @@ return (
     </div>
     <div className="list-item__s">
       <h3>
-        {hostFacilitator.phone}
+        {parseInt(hostFacilitator.phone) !== 0 ? hostFacilitator.phone : <b>N/D</b>}
       </h3>
     </div>
     <div className="list-item__xxs">

@@ -9,6 +9,7 @@ import authReducer from '../reducers/auth';
 import usersReducer from '../reducers/users';
 import userFiltersReducer from '../reducers/userFilters';
 import hostFacilitatorFiltersReducer from '../reducers/hostFacilitatorFilters';
+import partakersFilters from '../reducers/partakersFilters';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -24,7 +25,8 @@ export default () => {
       auth: authReducer,
       users: usersReducer,
       userFilters: userFiltersReducer,
-      hostFacilitatorFilters: hostFacilitatorFiltersReducer
+      hostFacilitatorFilters: hostFacilitatorFiltersReducer,
+      partakersFilters: partakersFilters
     }),
     composeEnhancers(applyMiddleware(thunk)),
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

@@ -56,9 +56,9 @@ const AppRouter = () => (
         
         <SupervisorRoute path={routes.HOSTS_FACILITATORS} component={HostFacilitatorDashboardPage} exact={true}/>
         <SupervisorRoute path={routes.HOUSES} component={HousesPage} exact={true}/>
+        <SupervisorRoute path={routes.PARTAKERS_DASHBOARD} component={PartakerDashboardPage} exact={true}/>
 
         <RegistryRoute path={routes.REGISTRY} component={SearchPartakerPage} exact={true}/>
-        <RegistryRoute path={routes.REGISTRY_DASHBOARD} component={PartakerDashboardPage} exact={true}/>
         <RegistryRoute path={routes.EDIT_PARTAKER} component={EditPartakerPage} exact={true} />
         
         <Route component={NotFoundPage} />

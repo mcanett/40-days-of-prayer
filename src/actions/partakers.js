@@ -157,7 +157,8 @@ export const startEditPartaker = (id, updates, userName) => {
         return numberLabel + 1;
       }).then((numberLabel) => {
         updates.hostInfo.numberLabel = numberLabel.snapshot.val();
-        return database.ref(`partakers/${id}`).set(updates).then(() => {
+        // return database.ref(`partakers/${id}`).set(updates).then(() => {
+        return database.ref(`partakers/${id}`).update({ ...updates }).then(() => {
           dispatch(editPartaker(id, updates));
           dispatch(addLastPartaker({
             id,
@@ -167,7 +168,7 @@ export const startEditPartaker = (id, updates, userName) => {
       });
     }
 
-    return database.ref(`partakers/${id}`).set(updates).then(() => {
+    return database.ref(`partakers/${id}`).update({ ...updates }).then(() => {
       dispatch(editPartaker(id, updates));
       dispatch(addLastPartaker({
         id,
@@ -219,6 +220,22 @@ export const setHousesFacilitators = (housesFacilitators) => ({
   type: 'SET_HOUSES_FACILITATORS',
   housesFacilitators
 });
+
+// SET_HAS_HANDBOOK
+export const setHasHandbook = (id, hasHandbook) => ({
+  type: 'SET_HAS_HANDBOOK',
+  id,
+  hasHandbook
+});
+
+export const startSetHasHandbook = (id, hasHandbook) => {
+  return (dispatch) => {
+    const partakerHasHandbook = database.ref(`partakers/${id}/hasHandbook`);
+    return partakerHasHandbook.parent.update({ hasHandbook }).then(() => {
+      dispatch(setHasHandbook(id, hasHandbook));
+    });
+  };
+};
 
 // GET_PARTAKER
 /*export const addSearchedPartaker = (partaker) => ({

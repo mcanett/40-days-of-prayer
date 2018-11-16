@@ -21,6 +21,18 @@ export default (state = partakersReducerDefaultState, action) => {
       });
     case 'SET_PARTAKERS':
       return action.partakers;
+    case 'SET_HAS_HANDBOOK':
+      return state.map((partaker) => {
+        if (partaker.id === action.id){
+            return {
+              id: partaker.id,
+              hasHandbook: action.hasHandbook,
+              ...partaker
+            };
+        } else {
+          return partaker;
+        }
+      });
     default:
       return state;
   }

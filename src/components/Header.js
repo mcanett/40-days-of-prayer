@@ -8,7 +8,7 @@ import * as routes from '../constants/routes';
 export const Header = ({ userName, userType }) => (
   <header className="header">
     <div className="header__title-box">
-      <img src="/images/logo-96-gold.png" className="header__title-box-logo"/>
+      <img src="/images/logo-96-gold.png" className="header__title-box-logo printable"/>
       <div className="header__title-user-name">
         <div className="dropdown">
           <UserIcon />
@@ -28,6 +28,10 @@ export const Header = ({ userName, userType }) => (
       )}
       {(userType === 'admin' || userType === 'registry' || userType === 'supervisor' ? 
         <NavLink className="header__navigation-item" to={routes.REGISTRY} activeClassName="is-active" exact={true}>Registro</NavLink>
+        : false
+      )}
+      {(userType === 'admin' || userType === 'supervisor' ? 
+        <NavLink className="header__navigation-item" to={routes.PARTAKERS_DASHBOARD} activeClassName="is-active" exact={true}>Participantes</NavLink>
         : false
       )}
       {(userType === 'admin' || userType === 'supervisor' ? 

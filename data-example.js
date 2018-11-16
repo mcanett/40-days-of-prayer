@@ -29,8 +29,8 @@ const dataExample =
       zipCode // codigo postal
     },
     location: {
-      x, // cordenada x
-      y // coordenada y
+      lat, // cordenada x
+      lng // coordenada y
     },
     number,
     houseSchedule, // horario de la casa

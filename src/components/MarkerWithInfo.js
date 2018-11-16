@@ -66,13 +66,21 @@ export class MarkerWithInfo extends React.Component {
                   {host.hostInfo.address.streetName} {host.hostInfo.address.houseNumber} {host.hostInfo.address.neighborhood}, {host.hostInfo.address.zipCode}
                 </h3>
                 <h4>Horario:</h4>
-                <h3>
-                  {host.hostInfo.houseSchedule}
-                </h3>
-                <h4>Cupo:</h4>
-                <h3>
-                  {houseRemainingCapacity}
-                </h3>
+                <h3>{host.hostInfo.houseSchedule}</h3>
+                <div className="info-window__row">
+                  <div>
+                    <h4>Capacidad:</h4>
+                    <h3>{host.hostInfo.houseCapacity}</h3>
+                  </div>
+                  <div>
+                    <h4>Inscritos:</h4>
+                    <h3>{host.hostInfo.houseCapacity - houseRemainingCapacity}</h3>
+                  </div>
+                  <div>
+                    <h4>Cupo:</h4>
+                    <h3>{houseRemainingCapacity}</h3>
+                  </div>
+                </div>
               </div>
             </InfoWindow>
         }

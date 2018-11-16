@@ -36,6 +36,9 @@ export const HostFacilitatorList = (props) => (
         )
       )
     }
+    {/*props.hosts.sort((a, b) => { return a.hostInfo.numberLabel - b.hostInfo.numberLabel }).forEach(h => {
+      console.log(h.hostInfo.numberLabel, h.hostInfo.location.lat, h.hostInfo.location.lng)
+    })*/}
   </div>
 );
 
