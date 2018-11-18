@@ -30,7 +30,7 @@ import PartakerDashboardPage from '../components/PartakerDashboardPage';
 import SearchPartakerPage from '../components/SearchPartakerPage';
 import EditPartakerPage from '../components/EditPartakerPage';
 
-import HousesPage from '../components/HousesPage';
+import MapPage from '../components/MapPage';
 
 
 export const history = createHistory();
@@ -55,7 +55,7 @@ const AppRouter = () => (
 
         
         <SupervisorRoute path={routes.HOSTS_FACILITATORS} component={HostFacilitatorDashboardPage} exact={true}/>
-        <SupervisorRoute path={routes.HOUSES} component={HousesPage} exact={true}/>
+        <SupervisorRoute path={routes.MAP} component={MapPage} exact={true}/>
         <SupervisorRoute path={routes.PARTAKERS_DASHBOARD} component={PartakerDashboardPage} exact={true}/>
 
         <RegistryRoute path={routes.REGISTRY} component={SearchPartakerPage} exact={true}/>

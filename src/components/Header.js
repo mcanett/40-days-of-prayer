@@ -39,7 +39,7 @@ export const Header = ({ userName, userType }) => (
         : false
       )}
       {(userType === 'admin' || userType === 'supervisor' ? 
-        <NavLink className="header__navigation-item" to={routes.HOUSES} activeClassName="is-active" exact={true}>Casas</NavLink>
+        <NavLink className="header__navigation-item" to={routes.MAP} activeClassName="is-active" exact={true}>Mapa</NavLink>
         : false
       )}
       {(userType === 'admin' ? 

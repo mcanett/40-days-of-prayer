@@ -20,4 +20,4 @@ export const PARTAKERS_DASHBOARD = "/partakers";
 export const REGISTRY = "/registry";
 export const EDIT_PARTAKER = "/edit/:id"; // <Route path="/edit/:id";
 
-export const HOUSES = "/houses";
+export const MAP = "/map";
