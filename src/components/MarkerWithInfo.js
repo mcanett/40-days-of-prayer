@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Marker, InfoWindow } from 'react-google-maps';
+import { getHasFacilitator, getHouseRemainingCapacity, getHouseCapacity } from '../utils/hostHelper';
+import * as house from '../constants/houses';
 
 export class MarkerWithInfo extends React.Component {
   constructor(props) {
@@ -26,25 +28,32 @@ export class MarkerWithInfo extends React.Component {
     const purpleIconUrl = "http://maps.google.com/mapfiles/kml/paddle/purple-blank.png";
     let iconUrl = '';
     let title = '';
+    let labelText = hasFacilitator !== 0 ? host.hostInfo.numberLabel.toString() : host.hostInfo.numberLabel.toString() + '*';
 
-    if( houseRemainingCapacity <= 0) {
-      iconUrl = redIconUrl;
-      title = 'Casa llena';
-    } else if (houseRemainingCapacity <= (host.hostInfo.houseCapacity/2)) {
-      iconUrl = blueIconUrl;
-      title = 'Casa casi llena';
-    } else if (
-      ((hasFacilitator === 2 || hasFacilitator === 0) && houseRemainingCapacity === host.hostInfo.houseCapacity - 1) || // Self facilitator or Hasn't facilitator
-      (hasFacilitator === 1 && houseRemainingCapacity === host.hostInfo.houseCapacity - 2) // Has facilitator
-    ) {
-      iconUrl = whiteIconUrl;
-      title = 'Todo el cupo';
-    } else if (hasFacilitator === 3) {
-      iconUrl = purpleIconUrl;
-      title = 'ERROR';
-    }else {
-      iconUrl = greenIconUrl;
-      title = 'Suficiente cupo';
+    const houseCapacity = getHouseCapacity(host, houseRemainingCapacity, hasFacilitator);
+    switch(houseCapacity) {
+      case house.FULL:
+        iconUrl = redIconUrl;
+        title = 'Casa llena';
+        break;
+      case house.ALMOST_FULL:
+        iconUrl = blueIconUrl;
+        title = 'Casa casi llena';
+        labelText = host.hostInfo.houseCapacity - houseRemainingCapacity < 5 ? labelText + '#' : labelText;
+        break;
+      case house.EMPTY:
+        iconUrl = whiteIconUrl;
+        title = 'Todo el cupo';
+        break;
+      case house.ERROR:
+        iconUrl = purpleIconUrl;
+        title = 'ERROR';
+        break;
+      case house.ENOUGH_ROOM:
+        iconUrl = greenIconUrl;
+        title = 'Suficiente cupo';
+        labelText = host.hostInfo.houseCapacity - houseRemainingCapacity < 5 ? labelText + '#' : labelText;
+        break;
     }
 
     return (
@@ -52,7 +61,7 @@ export class MarkerWithInfo extends React.Component {
               position={{ lat: host.hostInfo.location.lat, lng: host.hostInfo.location.lng }}
               onClick={houseRemainingCapacity <= 0 ? () => (false) : () => this.onMarkerClick(host.id)}
               label={{
-                "text": host.hostInfo.numberLabel.toString(),
+                "text": labelText,
                 "fontSize": "14px"
               }}
               title={title}
@@ -97,26 +106,9 @@ export class MarkerWithInfo extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  let hasFacilitator = undefined;
-  if (props.host.facilitatorInfo !== undefined) {
-    hasFacilitator = 2; // self facilitator
-  } else {
-    const facilitator = state.partakers.filter(partaker => partaker.houseId === props.host.id && partaker.facilitatorInfo !== undefined)
-    if (facilitator.length > 1) {
-      hasFacilitator = 3; // error (more than 1 facilitator)
-    } else if (facilitator.length === 1) {
-      hasFacilitator = 1; // has facilitator
-    } else {
-      hasFacilitator = 0; // hasn't facilitator
-    }
-  }
-
   return {
-    houseRemainingCapacity: (
-      props.host.hostInfo.houseCapacity - 
-      state.partakers.filter(partaker => partaker.houseId === props.host.id).length
-      ) - 1,
-    hasFacilitator
+    houseRemainingCapacity: getHouseRemainingCapacity(props.host, state.partakers),
+    hasFacilitator: getHasFacilitator(props.host, state.partakers)
   };
 };
 

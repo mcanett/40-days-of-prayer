@@ -10,6 +10,7 @@ import usersReducer from '../reducers/users';
 import userFiltersReducer from '../reducers/userFilters';
 import hostFacilitatorFiltersReducer from '../reducers/hostFacilitatorFilters';
 import partakersFilters from '../reducers/partakersFilters';
+import mapFilters from '../reducers/mapFilters';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -26,7 +27,8 @@ export default () => {
       users: usersReducer,
       userFilters: userFiltersReducer,
       hostFacilitatorFilters: hostFacilitatorFiltersReducer,
-      partakersFilters: partakersFilters
+      partakersFilters: partakersFilters,
+      mapFilters: mapFilters
     }),
     composeEnhancers(applyMiddleware(thunk)),
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

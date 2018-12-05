@@ -32,7 +32,7 @@ const dataExample =
       lat, // cordenada x
       lng // coordenada y
     },
-    number,
+    numberLabel,
     houseSchedule, // horario de la casa
     houseCapacity, // cap. de la casa
     layaways, // num. de apartados
