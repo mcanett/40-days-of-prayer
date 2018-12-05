@@ -39,7 +39,7 @@ export class MarkerWithInfo extends React.Component {
       case house.ALMOST_FULL:
         iconUrl = blueIconUrl;
         title = 'Casa casi llena';
-        labelText = host.hostInfo.houseCapacity - houseRemainingCapacity < 5 ? labelText + '#' : labelText;
+        labelText = host.hostInfo.houseCapacity - houseRemainingCapacity < 4 ? labelText + '#' : labelText;
         break;
       case house.EMPTY:
         iconUrl = whiteIconUrl;
@@ -52,7 +52,7 @@ export class MarkerWithInfo extends React.Component {
       case house.ENOUGH_ROOM:
         iconUrl = greenIconUrl;
         title = 'Suficiente cupo';
-        labelText = host.hostInfo.houseCapacity - houseRemainingCapacity < 5 ? labelText + '#' : labelText;
+        labelText = host.hostInfo.houseCapacity - houseRemainingCapacity < 4 ? labelText + '#' : labelText;
         break;
     }
 
