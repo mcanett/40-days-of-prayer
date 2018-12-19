@@ -78,6 +78,9 @@ export class MapFilters extends React.Component {
             checked={this.props.filters.withoutFacilitatorHouses}
             /><label htmlFor="withoutFacilitator"></label>
           </div>
+          {/*<div className="input-group__item">
+              <span>*</span> = Casas sin facilitador
+          </div>*/}
         </div>
         <div className="input-group not-printable">
           <div className="input-group__item">
@@ -124,7 +127,18 @@ export class MapFilters extends React.Component {
             checked={this.props.filters.emptyHouses}
             /><label htmlFor="emptyHouses"></label>
           </div>
-        </div>
+          {/*<div className="input-group__item">
+              <span>#</span> = Casas con menos de 4 personas
+          </div>*/}
+          </div>
+          <div className="input-group not-printable">
+            <div className="input-group__item">
+              <span>*</span> = Casas sin facilitador
+            </div>
+            <div className="input-group__item">
+              <span>#</span> = Casas con menos de 4 personas
+            </div>
+          </div>
       </div>
     );
   }

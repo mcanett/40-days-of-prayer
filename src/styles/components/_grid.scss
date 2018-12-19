@@ -1,0 +1,84 @@
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.cell {
+  // justify-content: center;
+  text-align: center;
+  border-width: 2px 2px;
+  border-style: solid;
+  margin: 0 -1px -1px 0;
+  padding: 5px 0px;
+  min-width: 60px;
+  
+  color: $darkest-gray;
+  font-style: none;
+  font-weight: 350;
+  text-decoration: none;
+  transition: background .3s ease;
+  
+  h3 {
+    font-style: none;
+    font-weight: 300;
+    margin: 0;
+  }
+}
+
+.cell__header {
+  @extend .cell;
+  background: darken($lightest-gray, 3%);
+  border: 1px solid $light-gray;
+  color: $dark-gray;
+}
+
+.cell__content {
+  @extend .cell__header;
+  background: none;
+}
+
+.cell__xs {
+  width: 6rem;
+}
+
+.cell__s {
+  width: 13rem;
+}
+
+.cell__m {
+  width: 26rem;
+}
+
+.cell__l {
+  width: 40rem;
+}
+
+.cell__xl {
+  width: 65rem;
+}
+
+.cell__white {
+  background-color: white;  
+}
+
+.cell__green {
+  background-image: linear-gradient(to bottom right, white 1%, rgb(55, 192, 85));
+  // background-color: #5AFD7C;
+}
+
+.cell__blue {
+  background-image: linear-gradient(to bottom right, white 1%, rgb(61, 98, 209));
+  // background-color: #5680FC;
+}
+
+.cell__red {
+  background-image: linear-gradient(to bottom right, white 1%, rgb(199, 68, 61));
+  // background-color: #FA6259;
+}
+
+.cell__purple {
+  background-image: linear-gradient(to bottom right, white 1%, rgb(187, 64, 187));
+  // background-color: violet; 
+}

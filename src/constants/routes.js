@@ -21,3 +21,6 @@ export const REGISTRY = "/registry";
 export const EDIT_PARTAKER = "/edit/:id"; // <Route path="/edit/:id";
 
 export const MAP = "/map";
+
+export const HOUSES = "/houses";
+export const EDIT_HOUSE = "/house/:id";

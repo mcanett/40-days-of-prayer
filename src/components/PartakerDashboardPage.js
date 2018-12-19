@@ -39,6 +39,11 @@ export class PartakerDashboardPage extends React.Component {
     return (
       <div className="component" id="section-to-print">
         <div className="component__container">
+          <div className="header__title-box">
+            <img src="/images/logo-192-green.png" className="header__title-box-logo visible-on-print" style={{width: "15%", heigth: "15%"}}/>
+            <h1 className="component__header visible-on-print" style={{"margin-top": "50px"}}>Entrega de Manuales</h1>
+            <img src="/images/CedesLCortado.png" className="header__title-box-logo visible-on-print" style={{width: "20%", heigth: "20%"}}/>
+          </div>
           <h1 className="component__header not-printable">Participantes en general</h1>
           <PartakersSummary />
           <PartakerListFilters />

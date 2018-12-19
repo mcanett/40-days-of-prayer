@@ -27,6 +27,11 @@ button:disabled {
   font-weight: bold;
 }
 
+
+.visible-on-print {
+  display: none;
+}
+
 @media print {
   body * {
     visibility: hidden;
@@ -52,9 +57,10 @@ button:disabled {
         display: none;
     }
   }
+  .visible-on-print {
+    visibility: visible;
+    display: block;
+  }
 }
 
-.visible-on-print {
-  visibility: hidden;
-  display: none;
-}
+

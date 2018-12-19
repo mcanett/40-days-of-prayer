@@ -9,7 +9,8 @@ import * as routes from '../constants/routes';
 export class EditPartakerPage extends React.Component {
   onSubmit = (partaker) => {
     this.props.startEditPartaker(this.props.partaker.id, partaker, this.props.userName).then(() => {
-      this.props.history.push(routes.REGISTRY);
+      // this.props.history.push(routes.REGISTRY);
+      this.props.history.goBack();
     });
   };
   onRemove = () => {

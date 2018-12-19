@@ -9,8 +9,14 @@
 }
 
 .input-group__item {
+  font-weight: 300;
   margin-bottom: $s-size;
   @media (min-width: $desktop-breakpoint) {
     margin: 0 $s-size 0 0;
+  }
+
+  span {
+    font-size: x-large;
+    font-weight: bold;
   }
 }
