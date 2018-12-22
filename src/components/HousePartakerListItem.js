@@ -27,7 +27,7 @@ export default class PartakerListItem extends React.Component {
             {phone}
           </h3>
         </div>
-        <div className="list-item__xs">
+        <div className="list-item__xs not-printable">
           <h3 className="not-printable">
             <Link to={{
               pathname: `/edit/${id}`,

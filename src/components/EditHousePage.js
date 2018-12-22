@@ -41,7 +41,7 @@ export class EditHousePage extends React.Component {
             {facilitator.phone}
           </h3>
         </div>
-        <div className="cell__content cell__xs">
+        <div className="cell__content cell__xs not-printable">
           <h3>
             <Link to={{
               pathname: `/edit/${facilitator.id}`,
@@ -65,9 +65,14 @@ export class EditHousePage extends React.Component {
 
 
     return (
-      <div className="component">
+      <div className="component" id="section-to-print">
         <div className="component__container">
-          <h1 className="component__header">Detalles de casa</h1>
+          <div className="header__title-box">
+            <img src="/images/logo-192-green.png" className="header__title-box-logo visible-on-print" style={{width: "15%", heigth: "15%"}}/>
+            <h1 className="component__header visible-on-print" style={{"margin-top": "50px"}}>Detalles de casa</h1>
+            <img src="/images/CedesLCortado.png" className="header__title-box-logo visible-on-print" style={{width: "20%", heigth: "20%"}}/>
+          </div>
+          <h1 className="component__header not-printable">Detalles de casa</h1>
           <div className="grid">  
             <div className="cell__header cell__xs">#:</div>
             <div className="cell__content cell__xs">
@@ -116,7 +121,7 @@ export class EditHousePage extends React.Component {
                 {host.phone}
               </h3>
             </div>
-            <div className="cell__content cell__xs">
+            <div className="cell__content cell__xs not-printable">
               <h3>
                 <Link to={{
                   pathname: `/edit/${host.id}`,
